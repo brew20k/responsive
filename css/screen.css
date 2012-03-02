@@ -1,0 +1,160 @@
+/* reset styles
+--------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+
+/* fix for older browsers
+--------------------------------------------- */	
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* common
+--------------------------------------------- */
+
+.center {
+	text-align: center;
+}
+
+
+/* main styles
+--------------------------------------------- */
+
+html, body {
+	background: url(../img/background.png) repeat;
+	font: normal 100% "Helvetica Neue", Helvetica, Arial;
+}
+
+body {
+	border-top: 5px solid #CD4E24;
+}
+
+#main {
+	margin: 20px auto;
+	width: 90%;
+	-webkit-transition: all 2s ease-in-out;
+}
+
+#main header {
+	display: block;
+	text-align: center;
+	width: 100%; /* 960px / 960px */
+}
+
+#main header img {
+	margin: 30px 0px;
+	max-width: 100%;
+	width: 50%; /* 480px / 960px */
+}
+
+#main .third {
+	float: left;
+	margin: 20px 1.04166666%; /* 10px / 960px */
+	width: 31.25%; /* 300px / 960px */
+}
+
+#main .third img {
+	cursor: pointer;
+	-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, .2);
+	-webkit-transition: all 100ms ease-in-out;
+}
+
+#main .third img:hover {
+	-webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, .3);
+}
+
+.caption {
+	font-size: 0.75em; /* 12px / 16px */
+}
+
+#main h2 {
+	color: #000;
+	font-weight: bold;
+	margin: 10px 0;
+	text-transform: uppercase;
+}
+
+#main section {
+	margin-bottom: 20px;
+}
+
+#main p {
+	font-weight: 300;
+}
+
+#main header span {
+	text-transform: uppercase;
+}
+
+img.flexible {
+	max-width: 100%;
+}
+
+/* responsiveness
+--------------------------------------------- */
+
+@media screen and (max-width: 1050px) {
+
+}
+	
+@media screen and (max-width: 980px) {
+
+}
+	
+@media screen and (max-width: 800px) {
+
+}	
+
+@media screen and (max-width: 500px) {
+	
+	#main header img {
+		width: 83.33333333333%; /* 800px / 960px */
+	}
+	
+	#main .third {
+		float: none;
+		margin: 20px 0;
+		width: 97.9166666666%; /* 940px / 960px */		
+	}
+	
+}
