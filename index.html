@@ -2,88 +2,711 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>OrangeUI</title>
+<title>Responsive Design</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
 <!-- iOS meta rules -->
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="white">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-<!-- iOS touch images -->
-<link rel="apple-touch-icon-precomposed" href="img/touch-icon-iphone.png" />
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch-icon-ipad.png" />
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch-icon-iphone4.png" />
+<script type="text/javascript" src="http://use.typekit.com/gpz8ouc.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
-<!-- iOS viewport rules -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<style type="text/less">
 
-<!-- Normalize CSS -->
-<link rel="stylesheet" href="lib/normalize.css" type="text/css" />
+/* reset styles
+--------------------------------------------- */
 
-<style type="text/css">
-
-header img {
-	margin: 30px 0px;
-	max-width: 100%;
-	width: 50%; /* 480px / 960px */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
 }
 
 
+/* fix for older browsers
+--------------------------------------------- */	
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* flexible grid
+--------------------------------------------- */
+
+.column_6 {
+	overflow: hidden;
+	margin: 0 1.0416666666%; /* 10px / 960px */
+	width: 47.9166666666%; /* 440px / 960px */
+}
+
+.columns_12 {
+	margin: 2em 0; /* 24px / 24px */
+	overflow: hidden;
+}
+
+.column_12 {
+	margin: 0 1.0416666666%; /* 10px / 960px */
+}
+
+.column_10 {
+	margin: 0 1.0416666666%; /* 10px / 960px */
+	width: 82.9787234%; /* 780px / 960px */
+}
+
+.columns_12 .column_6 {
+	float: left;
+}
+
+/* page styles
+--------------------------------------------- */	
+
+html {
+	background: url(img/background.png) center top repeat-x;
+	font: normal 100% Calibri, "Helvetica Neue", Arial, sans-serif;
+}
+
+p {
+	color: #333;
+	font-family: Calibri, "Georgia", sans-serif;
+	font-weight: 300;
+	line-height: 150%;
+}
+
+q {
+	color: #666;
+	font-family: "fanwood";
+	font-style: italic;
+	font-size: 16px;
+	display: inline-block;
+	line-height: 120%;
+	margin: 1.5em 0 .5em 0; /* 24px / 16px */
+	text-indent: 10px;
+}
+
+a {
+	color: #000;
+	display: inline-block;
+	margin: 0.25em 0;
+	text-decoration: none;
+}
+
+aside {
+	background-color: #F8F8F8;
+	padding: 1px 20px 20px 20px;
+	margin: 0 0 2em 0;
+	-webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, .3);
+	-moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, .3);
+}
+
+.formula p {
+	background-color: #F8F8F8;
+	font-size: 1.25em;
+	font-weight: 300;
+	padding: 20px;
+	line-height: 100%;
+	margin: 0.5em 0 0.5em 0;
+	text-align: center;
+	-webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, .3);
+	-moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, .3);
+}
+
+aside {
+	h1, h2, h3, h4, p, a {
+		font-size: .875em;
+	}
+	a {
+		margin: 0.5em 0;
+	}
+}
+
+h1 {
+	margin: 0 auto;
+	width: 360px; /* fixed */
+}
+
+h2 {
+	color: #CD4E24;
+	font-family: "nimbus-sans",sans-serif;
+	font-size: 1.5em; /* 24px / 16px */
+	font-weight: 400;
+	letter-spacing: -0.05em;
+	margin: 1em 0; /* 16px / 16px */
+}
+
+h3 {
+	margin: 1.5em 0; /* 16px / 16px */
+}
+
+.center {
+	text-align: center;
+}
+
+.clear {
+	clear: both;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.quote-author {
+	font-size: 0.875em; /* 14px / 16px */
+	color: #666;
+	display: inline-block;
+	text-indent: 2em;
+}
+
+
+/* page styles
+--------------------------------------------- */
+
+#page {
+	font-size: 1em; /* 16px / 16px */
+	margin: 0 auto;
+	width: 90%;
+}
+
+#page h1 .title {
+	background: url(img/title.png) top center no-repeat;
+	height: 65px;
+	margin: 5.625em auto; /* 90px / 16px */
+	max-width: 100%; /* 360px / 360px */
+	-webkit-transition: margin 200ms ease-in-out;
+	-moz-transition: margin 200ms ease-in-out;
+}
+
+#page .presentation-button {
+	background: transparent top left no-repeat;
+	cursor: pointer;
+	height: 64px;
+	margin-top: -42px;
+	position: absolute;
+	right: 0px;
+	width: 90px;
+	-webkit-transform: scale(1);
+	-webkit-transition: width 70ms ease-in-out;
+	-moz-transform: scale(1);
+	-moz-transition: width 70ms ease-in-out;
+}
+
+#page .presentation-button:hover {
+	width: 100px;
+	-webkit-transition: width 70ms ease-in-out;
+	-moz-transition: width 70ms ease-in-out;
+}
+
+#page .presentation-button:active {
+	width: 100px;
+	-webkit-transition: width 70ms ease-in-out;
+	-moz-transition: width 70ms ease-in-out;
+}
+
+article {
+	margin-bottom: 30px;
+}
+
+strong {
+	font-weight: bold;
+}
+
+
+/* article styles
+--------------------------------------------- */	
+
+#whatis h2 {
+	text-align: center;
+	margin: 1em auto; /* 16px / 24px */
+}
+
+#whatis h3 {
+	margin: 1em 1.041666666%; /* 16px / 24px  |  10px / 960px */
+}
+
+#whatis p {
+	font-size: 1.125em; /* 18px / 16px */
+}
+
+#whatis nav {
+	background: url(img/menu.png) center top no-repeat;
+	margin: 2em auto; /* 32px / 16px */
+	overflow: hidden;
+	width: 680px; /* fixed */
+}
+
+#whatis nav ul {
+	margin: 0 auto;
+	overflow: hidden;
+	width: 80%; /* 544px / 680px */
+}
+
+#whatis nav li {
+	color: #FFF;
+	cursor: pointer;
+	font-family: Futura, "Helvetica Neue", Helvetica;
+	font-size: 0.875em; /* 14px / 16px */
+	font-weight: 400;
+	float: left;
+	height: 54px;
+	line-height: 54px;
+	text-align: center;
+	text-transform: uppercase;
+	width: 33.333333333%; /* 181px / 544px */
+}
+
+#whatis nav li:hover {
+	color: #EEE;
+}
+
+#whatis ul.examples {
+	overflow: hidden;
+	width: 100%; /* 960px / 960px */
+}
+
+#whatis ul.examples li {
+	float: left;
+	margin: 0 1.041666666%; /* 10px / 960px */
+	width: 31.25%; /* 300px / 960px */
+}
+
+#whatis ul.examples li img {
+	cursor: pointer;
+	width: 100%;
+	-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, .2);
+	-webkit-transition: all 100ms ease-in-out;
+	-moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, .2);
+	-moz-transition: all 100ms ease-in-out;
+}
+
+#whatis ul.examples li img:hover {
+	-webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, .3);
+	-moz-box-shadow: 0px 2px 4px rgba(0, 0, 0, .3);
+}
+
+#whatis ul.examples figcaption {
+	font-family: "nimbus-sans",sans-serif;
+	font-size: .75em; /* 12px / 16px */
+	margin: 1em 0;
+}
+
+#grid .presentation-button {
+	background-image: url(img/grid-icon.png);
+}
+
+#grid h2 {
+	margin: 2.5em 1.041666666% 1.5em 1.041666666%; /* 16px / 24px  |  10px / 960px */
+}
+
+#grid h3 {
+	margin: 1em 1.041666666%; /* 16px / 24px  |  10px / 960px */
+}
+
+#grid .grid-system {
+	height:  200px;
+	margin: 2em auto;
+	overflow: hidden;
+}
+
+#grid .grid-system .half-gutter {
+	background-color: #EEE;
+	float: left;
+	height: 100%;
+	width: 1.041666666%; /* 10px / 960px */
+}
+
+#grid .grid-system .separator {
+	background-color: #CD4E24;
+	float: left;
+	height: 100%;
+	width: 0.208333333333%; /* 2px / 960px */
+}
+
+#grid .grid-system .column {
+	background-color: #CD4E24;
+	float: left;
+	height: 100%;
+	margin: 0 0.9375%; /* 9px / 960px */
+	width: 6.25%; /* 60px / 960px */
+}
+
+#flexible-images h2 {
+	margin: 2.5em 1.041666666% 1.5em 1.041666666%; /* 16px / 24px  |  10px / 960px */
+}
+
+#flexible-images .presentation-button {
+	background-image: url(img/flexible-images-icon.png);
+}
+
+#media-queries h2 {
+	margin: 2.5em 1.041666666% 1.5em 1.041666666%; /* 16px / 24px  |  10px / 960px */
+}
+
+#media-queries .presentation-button {
+	background-image: url(img/media-queries-icon.png);
+}
+
+#resources h2 {
+	margin: 2.5em 1.041666666% 1.5em 1.041666666%; /* 16px / 24px  |  10px / 960px */
+}
+
+#resources .presentation-button {
+	background-image: url(img/resources-icon.png);
+}
+
+/* responsive
+--------------------------------------------- */	
+
+@media screen and (min-width: 1400px) {
+	
+	#page {
+		width: 1360px; /* fixed */	
+	}
+}
+
+@media screen and (max-width: 760px) {
+	
+	.columns_12 {
+		margin: 0;
+	}
+	
+	.columns_12 .column_6 {
+		margin: 0 1.044166666; /* 10px / 960px */
+		width: 97.91666666%; /* 940px / 960px */
+		float: none;
+	}
+	
+	#grid .grid-system .column {
+		width: 14.58333333%; /* 140px / 960px */
+	}
+	
+	#grid .grid-system .column.odd {
+		display: none;
+	}
+	
+	#grid .grid-system .separator.odd {
+		display: none;
+	}
+	
+	q {
+		margin: 0.5em 0em .25em 0em; /* 24px / 16px */
+	}
+	
+	aside {
+		background-color: #FCFCFC;
+		border-top: 1px solid #EEE;
+		padding: 15px 20px 20px 20px;
+		margin: 1em 0 1em 0;
+		-webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, .3);
+		-moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, .3);
+	}
+	
+	aside {
+		h1, h2, h3, h4 {
+			margin-top: 5px;
+			padding-top: 0px;
+		}
+	}
+	
+	#page h1 .title {
+		margin-top: 2.5em; /* 40px / 16px */
+		margin-bottom: 1em; /* 16px / 16px */
+		-webkit-transition: margin 200ms ease-in-out;
+		-moz-transition: margin 200ms ease-in-out;
+	}
+	
+	#whatis nav {
+		background-image: none;
+		width: 100%;
+	}
+	
+	#whatis nav li {
+		background: url(img/menu-small.png) center top no-repeat;
+		float: none;
+		margin: 0 auto;
+		margin-bottom: 0.5em;
+		width: 280px;
+	}
+	
+	#whatis ul.examples li {
+		float: none;
+		margin-bottom: 2em;
+		width: 100%;
+	}
+	
+}
+
+@media screen and (max-width: 360px) {
+	
+	#page h1 {
+		width: 280px; /* fixed */
+	}
+	
+	#page h1 .title {
+		margin-bottom: 0;
+	}
+	
+	#whatis nav ul {
+		width: 100%; /* 680px / 680px */
+	}
+	
+	.hide_640 {
+		display: none;
+	}
+
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio:1.5), only screen and (min-device-pixel-ratio:1.5) {
+
+	#page h1 {
+		overflow: hidden;
+		width: 240px !important;
+	}
+	
+	#page h1 .title {
+		background-image: url(img/title@2x.png);
+		-webkit-background-size: 240px 43.333333px;
+		-moz-background-size: 240px 43.333333px;
+	}
+	
+	#whatis nav li {
+		background-image: url(img/menu-small@2x.png);
+		-webkit-background-size: 280px 54px;
+		-moz-background-size: 280px 54px;
+	}
+	
+	#grid .presentation-button {
+		background-image: url(img/grid-icon@2x.png);
+		-webkit-background-size: 100px 64px;
+		-moz-background-size: 100px 64px;
+	}
+	
+	#flexible-images .presentation-button {
+		background-image: url(img/flexible-images-icon@2x.png);
+		-webkit-background-size: 100px 64px;
+		-moz-background-size: 100px 64px;
+	}
+	
+	#media-queries .presentation-button {
+		background-image: url(img/media-queries-icon@2x.png);
+		-webkit-background-size: 100px 64px;
+		-moz-background-size: 100px 64px;
+	}
+	
+	#resources .presentation-button {
+		background-image: url(img/resources-icon@2x.png);
+		-webkit-background-size: 100px 64px;
+		-moz-background-size: 100px 64px;
+	}
+	
+	
+}
+
 </style>
 
-<!-- UI stylesheets -->
-<link rel="stylesheet" type="text/css" href="css/screen.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="css/screen.css" media="print" />
-
-<!-- External Libraries -->
-<script type="text/javascript" src="lib/respond.js"></script>
+<script type="text/javascript" src="js/less-1.1.3.min.js"></script>
 
 </head>
 
-
 <body>
 
-<div id="main">
+<div id="page">
 
-	<header>
-		<h1><img src="img/title.png" alt="Responsive Design"/></h1>
-	</header>
+	<h1>
+		<div class="title"></div>
+	</h1>
 	
-	<br/>
+	<article id="whatis">
 	
-	<section>
-	
-		<h2 class="center">What is Responsive Design?</h2>
+		<h2>What is Responsive Design?</h2>
 		
-		<p class="center">The practice of designing web pages to adapt and resize to the medium they are 
-		viewed in, whether that be a browser, mobile phone, or tablet.</p>
-	
-	</section>
-	
-	<br/>
-	
-	<section>
-	
-		<h2 class="center">Examples of Responsive Design</h2>
+		<p class="column_12 center">The practice of designing web pages to adapt and resize to the medium they are viewed in, whether that be a browser, mobile phone, or tablet.</p>
 		
-		<figure class="third">
-			<img src="img/simplebits.png" alt="" class="flexible" />
-			<span class="caption">Simple Bits Creative Studio</span>
-		</figure>
+		<nav>
 		
-		<figure class="third">
-			<img src="img/trentwalton.png" alt="" class="flexible" />
-			<span class="caption">Trent Walton Blog</span>
-		</figure>
+			<ul>
+				<li>Fluid Grid</li>
+				<li>Flexible Images</li>
+				<li>Media Queries</li>
+			</ul>
+					
+		</nav>
 		
-		<figure class="third">
-			<img src="img/dribbble.png" alt="" class="flexible" />
-			<span class="caption">Dribbble Design Community</span>
-		</figure>
+		<h3>Responsive Design in Practice</h3>
+		
+		<ul class="examples">
+			<li>
+				<figure>
+					<a href="http://www.simplebits.com/" target="_blank"><img src="img/simplebits.png" alt="SimpleBits"/></a>
+					<figcaption>SimpleBits Design Studio</figcaption>
+				</figure>
+			</li>
+			<li>
+				<figure>
+					<a href="http://trentwalton.com/" target="_blank"><img src="img/trentwalton.png" alt="Trent Walton"/></a>
+					<figcaption>Trent Walton Blog</figcaption>
+				</figure>
+			</li>
+			<li>
+				<figure>
+					<a href="http://www.unitedpixelworkers.com/" target="_blank"><img src="img/upw.png" alt="United Pixel Workers"/></a>
+					<figcaption>United Pixelworkers Store</figcaption>
+				</figure>
+			</li>
+		</ul>
 	
-	</section>
+		<div class="columns_12">
 		
+			<p class="column_6">The term <strong>responsive design</strong> was coined by <strong>Ethan Marcotte</strong> in his May 2010 article for web design online magazine <strong>A List Apart</strong>. Though the practices involved in designing responsive websites existed long before his article, his term brought together disparate features and ideas into a succinent way to design outside the constraints of the specific tools of the present.</p>
+			
+			<div class="column_6">
+				<aside>
+				<q>"The control which designers know in the print medium, and often desire in the web medium, is simply a function of the limitation of the printed page. We should embrace the fact that the web doesn't have the same constraints, and design for this flexibility. But first, we must accept the ebb and flow of things."</q><span class="quote-author">- John Allsopp<span class="hide_640">, "A Dao of Web Design"</span></span>
+				</aside>
+			</div>
+		
+		</div>
+	
+	</article>
+	
+	<article id="grid">
+	
+		<h2>Fluid Grid<div class="presentation-button"></div></h2>
+		
+		<p class="column_12">A fluid grid divides the canvas into equal sized <strong>columns</strong> separated by <strong>gutters</strong>.</p>
+		
+		<div class="grid-system">
+			
+			<div class="half-gutter"></div>
+			<div class="column"></div>
+			<div class="separator odd"></div>
+			<div class="column odd"></div>
+			<div class="separator"></div>
+			<div class="column"></div>
+			<div class="separator odd"></div>
+			<div class="column odd"></div>
+			<div class="separator"></div>
+			<div class="column"></div>
+			<div class="separator odd"></div>
+			<div class="column odd"></div>
+			<div class="separator"></div>
+			<div class="column"></div>
+			<div class="separator odd"></div>
+			<div class="column odd"></div>
+			<div class="separator"></div>
+			<div class="column"></div>
+			<div class="separator odd"></div>
+			<div class="column odd"></div>
+			<div class="separator"></div>
+			<div class="column"></div>
+			<div class="separator odd"></div>
+			<div class="column odd"></div>
+			<div class="half-gutter"></div>
+			
+		</div>
+		
+		<div class="columns_12">
+		
+			<p class="column_6">Many grid systems exist at a variety of widths. A commonly used standard is to base your grid on a <strong>page width of 960px</strong>, 12 columns each 60px wide, 20px symmetrical gutters. The page's elements will then flex proportionally to the orginal 960px width.<br/><br/>Grid systems of <strong>12, 16, or 18</strong> columns are commonly used when designing.<br/><br/>The goal of using a grid system is to think in proportions, not pixels. Traditionally you would assign an absolute width of 960px to a full width div, while a partial width div would receive a width of 480 or 320px.<br/><br/>For grids, we have to think in percentages, for our dimensioning, padding, margin, and even font sizing. A grid help give us context and structure to our web page.</p></p>
+			
+			<div class="column_6">
+				<aside><q>To think about the web responsively is to think in proportions, not pixels.</q><span class="quote-author">- Trent Walton</span></aside>
+				<aside>
+					<h3>Resources For Grid Systems</h3>
+					<p>Many grid system templates are already created and available for download. Often then include mechanisms for folding, for example a 16 column grid is collapsed to 12 when the page shrinks to a certain size, then in 6 when the page shrinks again.</p><br/>
+					<a href="http://960.gs/">960 Grid</a><br/>
+					<a href="http://goldengridsystem.com/">Golden Grid System</a>
+				</aside>
+			</div>
+		
+		</div>
+		
+		<h3>Building Proportionally</h3>
+		
+		<figure class="formula column_12"><p>target &divide; context = result</p></figure>
+		
+		<div class="columns_12">
+		
+			<div class="column_6">
+				<h3>Fonts</h3>
+				<p>A 36px headline on a website may look fine for a desktop browser, but may become unslighly when viewed on a phone. Building your site’s fonts in ems instead of pixel sizes is the first step in creating a responsive site.</p>
+			</div>
+			
+			<div class="column_6">
+				<h3>Dimensions</h3>
+				<p>Fixed dimensions are fine for a fixed width site, but what happens when a user decides to resize the page. By basing all our dimensions in relation to the page, we can effectively scale our site to view properly at any browser width.</p>
+			</div>
+		
+		</div>
+	
+	</article>
+	
+	<article id="flexible-images">
+	
+		<h2>Flexible Images<div class="presentation-button"></div></h2>
+		
+		<p class="column_10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quam diam, tincidunt eu placerat vel, lacinia non nibh. Maecenas fermentum lacinia fringilla. Praesent ullamcorper lobortis est, vel auctor neque adipiscing nec. Ut ullamcorper nibh urna, eget eleifend elit. Aliquam egestas tristique quam, vitae accumsan erat gravida ut.</p>
+		
+	</article>
+	
+	<article id="media-queries">
+	
+		<h2>Media Queries<div class="presentation-button"></div></h2>
+		
+		<p class="column_10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quam diam, tincidunt eu placerat vel, lacinia non nibh. Maecenas fermentum lacinia fringilla. Praesent ullamcorper lobortis est, vel auctor neque adipiscing nec. Ut ullamcorper nibh urna, eget eleifend elit. Aliquam egestas tristique quam, vitae accumsan erat gravida ut.</p>
+		
+	</article>
+	
+	<article id="resources">
+	
+		<h2>Resources<div class="presentation-button"></div></h2>
+		
+		<p class="column_10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quam diam, tincidunt eu placerat vel, lacinia non nibh. Maecenas fermentum lacinia fringilla. Praesent ullamcorper lobortis est, vel auctor neque adipiscing nec. Ut ullamcorper nibh urna, eget eleifend elit. Aliquam egestas tristique quam, vitae accumsan erat gravida ut.</p>
+		
+	</article>
+	
+	<br/><br/><br/>
+
 </div>
 
 </body>
 
-</html>
+<html>
