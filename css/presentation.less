@@ -39,19 +39,25 @@
 .fullsize
 {
 	height:100%;
+	width:100%;
 }
 
 html
 {
-	.fullsize
+	.fullsize;
 }
 
 body
 {
 	font-family:Trebuchet,Arial,Sans Serif;
 	.fullsize;
-	
-	
+}
+
+.slidecontainer
+{
+	.fullsize;
+	height:auto;
+	z-index:-1;
 }
 
 h1
@@ -88,6 +94,7 @@ div.slide
 
 	text-align:center;
 	min-height:100%;
+	width:100%;
 	
 	
 	div.body
@@ -206,7 +213,7 @@ div.slide
 			{
 				float:right;
 				margin-left:0px;
-				margin-right:5%;
+				margin-right:0px;
 				background-color:#DDDDDD;
 				background-image:url('../img/css_bg.png');
 				background-position:right top;
@@ -410,5 +417,50 @@ div.slide
 			clear:both;
 		}
 		
+	}
+}
+
+/* Slide Controls */
+
+.slidecontrols
+{
+	z-index:10000000;
+	.slide_widget
+	{
+		z-index:10000000;
+		position:fixed;
+		top:50%;
+		border:3px dashed @bgcolor;
+		background-color:lighten(@bgcolor,40%);
+		font-size:18px;
+		font-family:Georgia;
+		color:darken(@bgcolor,10%);
+		padding:1%;
+	}
+	.previous
+	{
+	
+		.slide_widget;
+		left:0px;	
+		border-left:none;		
+		padding-left:.5%;
+		
+	}
+	
+	.next
+	{
+		.slide_widget;
+		left:93.5%;		
+		width:5%;		
+		text-align:right;		
+		border-right:none;		
+		padding-right:.5%;
+		
+	}
+	
+	a:hover .previous,a:hover .next
+	{
+		color:@bgcolor;
+		background-color:lighten(@bgcolor,60%);
 	}
 }

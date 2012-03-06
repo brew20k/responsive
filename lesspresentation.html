@@ -4,6 +4,7 @@
 	<link rel="stylesheet/less" type="text/css" href="css/presentation.less">
 	<script src="js/highlight.pack.js"></script>
 	<script src="js/jquery-1.7.1.min.js"></script>
+	<script src="js/jquery.cycle.all.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
 	<script type="text/javascript">
 	/**
@@ -103,6 +104,7 @@
 	}
 	
 	var less_keyColor = "";
+	var cycle_inProgress = false;
 	//Generate key color
 	{
 	var _h = Math.floor(Math.random() * 360);
@@ -111,156 +113,208 @@
 	less_keyColor = makeHSVString(_h,_s,_v);
 	}
 	
-	$(function()
-	{
-		$(document).ready(function() {
-		  $('div.codebox code pre').each(function(i, e) {hljs.highlightBlock(e, '    ')});
+
+	$(document).ready(function() {
+	  $('div.codebox code pre').each(function(i, e) {hljs.highlightBlock(e, '    ')});
+	  
+	  var hashVal = document.location.hash.substr(1);
+	  
+	  var slideFromHash = $('.slide[name="'+hashVal+'"]').index();
+	  if (slideFromHash == -1) slideFromHash = 0;
+	  $(".slidecontainer").cycle(
+		{
+		'fx':'scrollHorz',
+		'startingSlide':slideFromHash,
+		'before': function() { cycle_inProgress = true; },
+		'after': function() { 
+			cycle_inProgress = false;
+			document.location.hash = $(".slide:visible").attr('name');
+
+			}
+		}
+	  );
+	  $(".slidecontainer").cycle("pause");
+	  
+	  	//Handlers
+		$("a.prevlink").click(function()
+		{
+			if (!cycle_inProgress)
+			{
+				$(".slidecontainer").cycle("prev");
+			}
 		});
-	});
+		
+		$("a.nextlink").click(function()
+		{
+			if (!cycle_inProgress)
+			{
+				$(".slidecontainer").cycle("next");
+			}
+		});
+
+	});		
+	
+
+	
+	
+	
 	</script>
 	<script type="text/javascript" src="js/less-1.2.1.min.js"></script>
 
 	
 	</head>
 	<body>
-	<div class="slide">
-	<h1>What is LESS?</h1>
-		<div class="body">	
-			<div class="slide-image">
-				<a href="http://lesscss.org/" title="LESS"><img src="http://lesscss.org/images/logo.png"/></a>
-			</div>		
-			<ul>
-				<li><h2>"Dynamic Stylesheet Language"</h2></li>
-				<li>Extends CSS</li>
-				<li>Compiles into CSS</li>
-				<li><a href="http://lesscss.org/">lesscss.org</a></li>
-			</ul>
-			<div class="clear"></div>
-			
-		</div>
+	<div class="slidecontrols">
+			<a href="#" class="prevlink"><div class="previous">
+			previous
+			</div></a>
+			<a href="#" class="nextlink"><div class="next">
+			next
+			</div></a>
 	</div>
-	
-	<div class="slide">
-	<h1>Advantages / Disadvantages</h1>
-		<div class="body">
-			<h2>Advantages</h2>
-			<ul>
-				<li>Maintainable</li>
-				<li>Flexible</li>
-				<li>Concise</li>
-				<li>Modern</li>
-			</ul>
-			<h2>Disadvantages</h2>
-			<ul>
-				<li>Compiled</li>
-				<li>Complicated</li>
-				<li>Automatic</li>
-			</ul>
-		</div>
-	</div>
-	
-	<div class="slide">
-	<h1>Language Features</h1>
-		<div class="body">
-		<h2>Variables</h2>
-			<div class="dualcode">
-
-				<div class="codebox less">
-<code><pre>
-@bordercol: #B7FF93;
-@bgcol: #C3FFAD;
-@fontcol: #444444;
-@div_width: 400px;
-
-div.testbox
-{
-	border: 3px solid @bordercol;
-	color: @fontcol;
-	font-weight:bold;
-	background-color:@bgcol;
-	padding:20px;
-	margin-bottom:10px;
-	width:@div_width;
-}
-</pre></code>
-				</div>
-								
-				<div class="codebox css">
-				<code class="language-css"><pre>
-div.testbox {
-  border:3px solid #b7ff93;
-  color:#444444;
-  font-weight:bold;
-  background-color:#c3ffad;
-  padding:20px;
-  margin-bottom:10px;
-  width:400px;
-}
-				</pre></code>
-				</div>
-			</div>
-			
-			
-				<div class="example1">
-					<div class='testbox'>
-						Hello
-					</div>
-					<div class='testbox'>
-						Goodbye!
-					</div>					
-				</div>
-				
-			<div class="below-code">
+	<div class="slidecontainer">
+		<div class="slide" name="intro">
+		<h1>What is LESS?</h1>
+			<div class="body">	
+				<div class="slide-image">
+					<a href="http://lesscss.org/" title="LESS"><img src="http://lesscss.org/images/logo.png"/></a>
+				</div>		
 				<ul>
-					<li>Variables are static, constant*</li>
-					<li>Can be percents, numbers, colors, etc</li>
+					<li><h2>"Dynamic Stylesheet Language"</h2></li>
+					<li>Extends CSS</li>
+					<li>Compiles into CSS</li>
+					<li><a href="http://lesscss.org/">lesscss.org</a></li>
 				</ul>
-			</div>
+				<div class="clear"></div>
 				
+			</div>
 		</div>
 		
-		<div class="slide">
+		<div class="slide" name="ad">
+		<h1>Advantages / Disadvantages</h1>
+			<div class="body">
+				<h2>Advantages</h2>
+				<ul>
+					<li>Maintainable</li>
+					<li>Flexible</li>
+					<li>Concise</li>
+					<li>Modern</li>
+				</ul>
+				<h2>Disadvantages</h2>
+				<ul>
+					<li>Compiled</li>
+					<li>Complicated</li>
+					<li>Automatic</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="slide" name="var">
+		<h1>Language Features</h1>
+			<div class="body">
+				<h2>Variables</h2>
+				<div class="dualcode">
+
+					<div class="codebox less">
+						<code><pre>
+	@bordercol: #B7FF93;
+	@bgcol: #C3FFAD;
+	@fontcol: #444444;
+	@div_width: 400px;
+
+	div.testbox
+	{
+		border: 3px solid @bordercol;
+		color: @fontcol;
+		font-weight:bold;
+		background-color:@bgcol;
+		padding:20px;
+		margin-bottom:10px;
+		width:@div_width;
+	}
+	</pre></code>
+					</div>
+									
+					<div class="codebox css">
+					<code class="language-css"><pre>
+	div.testbox {
+	  border:3px solid #b7ff93;
+	  color:#444444;
+	  font-weight:bold;
+	  background-color:#c3ffad;
+	  padding:20px;
+	  margin-bottom:10px;
+	  width:400px;
+	}
+					</pre></code>
+					</div>
+				</div>
+				
+				
+					<div class="example1">
+						<div class='testbox'>
+							Hello
+						</div>
+						<div class='testbox'>
+							Goodbye!
+						</div>					
+					</div>
+					
+				<div class="below-code">
+					<ul>
+						<li>Variables are static, constant*</li>
+						<li>Can be percents, numbers, colors, etc</li>
+					</ul>
+				</div>
+					
+			</div>
+		</div>
+		
+		<div class="slide" name="mixin">
 			<h1>Language Features</h1>
 		<div class="body">
 		<h2>Mixins</h2>
-			<div class="dualcode">
-				<div class="codebox less">
-<code class="language-css"><pre>
-@bordercol: #B7FF93;
-@bgcol: #C3FFAD;
-@fontcol: #444444;
-@div_width: 400px;
-@coltwo: #FF0000;
-@bgcoltwo: #FFCCCC;
+		<div class="dualcode">
+			<div class="codebox less">
+	<code>
+	<pre>
+	@bordercol: #B7FF93;
+	@bgcol: #C3FFAD;
+	@fontcol: #444444;
+	@div_width: 400px;
+	@coltwo: #FF0000;
+	@bgcoltwo: #FFCCCC;
 
-.test-mixin
-{
-	padding:20px;
-	margin-bottom:10px;
-	font-weight: bol;
-	width:@div_width;
-}
+	.test-mixin
+	{
+		padding:20px;
+		margin-bottom:10px;
+		font-weight: bol;
+		width:@div_width;
+	}
 
-div.testbox
-{
-	border: 3px solid @bordercol;
-	color: @fontcol;
-	background-color:@bgcol;
-	.test-mixin; //<--- mix-in
-}
+	div.testbox
+	{
+		border: 3px solid @bordercol;
+		color: @fontcol;
+		background-color:@bgcol;
+		.test-mixin; //<--- mix-in
+	}
 
-div.testbox_two
-{
-	border:3px dashed @coltwo;
-	color: @coltwo;
-	background-color:@bgcoltwo;
-	.test-mixin; //<--- mix-in	
-}
-</pre></code>
-				</div>
+	div.testbox_two
+	{
+		border:3px dashed @coltwo;
+		color: @coltwo;
+		background-color:@bgcoltwo;
+		.test-mixin; //<--- mix-in	
+	}
+	</pre>
+	</code>
+	</div>
 								
 				<div class="codebox css">
-				<code class="language-css"><pre>
+				<code class="language-css">
+				<pre>
 .test-mixin {
   padding:20px;
   margin-bottom:10px;
@@ -284,339 +338,349 @@ div.testbox_two {
   margin-bottom:10px;
   font-weight:bol;
   width:400px;
-}</pre></code>
-</div>
-			</div>			
-			
-			<div class="example2">
-				<div class='testbox'>
-					Hello
+}</pre>
+</code>
 				</div>
-				<div class='testbox_two'>
-					Goodbye!
-				</div>					
-			</div>
+				</div>			
 				
-			<div class="below-code">
-				<ul>
-					<li>Mixins are still CSS classes</li>
-					<li>Inheritance</li>
-				</ul>
-			</div>				
+				<div class="example2">
+					<div class='testbox'>
+						Hello
+					</div>
+					<div class='testbox_two'>
+						Goodbye!
+					</div>					
+				</div>
+					
+				<div class="below-code">
+					<ul>
+						<li>Mixins are still CSS classes</li>
+						<li>Inheritance</li>
+					</ul>
+				</div>				
+			</div>
 		</div>
 		
-		<div class="slide">
+		<div class="slide" name="pm">
 			<h1>Language Features</h1>
 		<div class="body">
 		<h2>Parametric Mixins</h2>
 			<div class="dualcode">
 				<div class="codebox less">			
-<code class="language-css"><pre>
-@bordercol: #B7FF93;
-@bgcol: #C3FFAD;
-@fontcol: #444444;
-@div_width: 400px;
-@coltwo: #FF0000;
-@bgcoltwo: #FFCCCC;
+	<code><pre>
+	@bordercol: #B7FF93;
+	@bgcol: #C3FFAD;
+	@fontcol: #444444;
+	@div_width: 400px;
+	@coltwo: #FF0000;
+	@bgcoltwo: #FFCCCC;
 
-.test-mixin(@width)
-{
-	padding:20px;
-	margin-bottom:10px;
-	font-weight: bold;
-	width:@width;
-}
-
-div.testbox
-{
-	border: 3px solid @bordercol;
-	color: @fontcol;
-	background-color:@bgcol;
-	.test-mixin(300px);
-}
-
-div.testbox_two
-{
-	border:3px dashed @coltwo;
-	color: @coltwo;
-	background-color:@bgcoltwo;
-	.test-mixin(@div_width);
-}
-</pre></code>
-				</div>
-				
-				<div class="codebox css">
-<code class="language-css"><pre>
-div.testbox {
-  border:3px solid #b7ff93;
-  color:#444444;
-  background-color:#c3ffad;
-  padding:20px;
-  margin-bottom:10px;
-  font-weight:bold;
-  width:300px;
-}
-div.testbox_two {
-  border:3px dashed #ff0000;
-  color:#ff0000;
-  background-color:#ffcccc;
-  padding:20px;
-  margin-bottom:10px;
-  font-weight:bold;
-  width:400px;
-}
-</pre></code>
-				</div>
-			</div>			
-			
-			<div class="example3">
-				<div class='testbox'>
-					Hello
-				</div>
-				<div class='testbox_two'>
-					Goodbye!
-				</div>					
-			</div>
-				
-			<div class="below-code">
-				<ul>
-					<li>Similar to functions</li>
-					<li>Do not become actual CSS classes</li>
-				</ul>
-			</div>				
-		</div>
-		
-		<div class="slide">
-			<h1>Language Features</h1>
-		<div class="body">
-		<h2>Nested Structure</h2>
-			<div class="dualcode">
-				<div class="codebox less">			
-<code class="language-css"><pre>
-@bordercol: #B7FF93; @bgcol: #C3FFAD;
-@fontcol: #0000FF; @div_width: 400px;
-@coltwo: #FF0000; @bgcoltwo: #FFCCCC;
-
-.test-mixin(@width)
-{
-	padding:20px;
-	margin-bottom:10px;
-	font-weight: bold;
-	width:@width;
-}
-
-div.testbox
-{
-	border: 3px solid @bordercol;
-	background-color:@bgcol;
-	.test-mixin(300px);
-	
-	p
+	.test-mixin(@width)
 	{
+		padding:20px;
+		margin-bottom:10px;
+		font-weight: bold;
+		width:@width;
+	}
+
+	div.testbox
+	{
+		border: 3px solid @bordercol;
 		color: @fontcol;
+		background-color:@bgcol;
+		.test-mixin(300px);
 	}
-}
 
-div.testbox_two
-{
-	border:3px dashed @coltwo;
-	background-color:@bgcoltwo;
-	.test-mixin(@div_width);
-	
-	p
+	div.testbox_two
 	{
+		border:3px dashed @coltwo;
 		color: @coltwo;
+		background-color:@bgcoltwo;
+		.test-mixin(@div_width);
 	}
-}
-</pre></code>
-				</div>
-				
-				<div class="codebox css">
-<code class="language-css"><pre>
-div.testbox {
-  border:3px solid #b7ff93;
-  background-color:#c3ffad;
-  padding:20px;
-  margin-bottom:10px;
-  font-weight:bold;
-  width:300px;
-}
-div.testbox p { color:#0000ff; }
-div.testbox_two {
-  border:3px dashed #ff0000;
-  background-color:#ffcccc;
-  padding:20px;
-  margin-bottom:10px;
-  font-weight:bold;
-  width:400px;
-}
-div.testbox_two p { color:#ff0000; }
-</pre></code>
-				</div>
-			</div>			
-			
-			<div class="example4">
-				<div class='testbox'>
-					<p>Hello - I should be blue<p>
-				</div>
-				<div class='testbox_two'>
-					<p>Goodbye - I am red!</p>
-				</div>									
-			</div>
-				
-			<div class="below-code">
-				<ul>
-					<li>Compiles hierarchically</li>
-					<li>Easy to visualize structure</li>
-				</ul>
-			</div>				
-		</div>
-		
-		<div class="slide">
-			<h1>Language Features</h1>
-		<div class="body">
-		<h2>Scope, Comments, Importing</h2>
-			<div class="dualcode">
-				<div class="codebox less">
-<code class="language-css"><pre>
-/* Import a normal CSS file -
- this works in normal CSS as well */
-@import "import.css";
-
-@bordercol: #B7FF93;
-@bgcol: #C3FFAD;
-@fontcol: #444444;
-@div_width: 400px;
-@white: #FFFFFF;
-
-div.testbox
-{
-	@white: #FF0000;
-	border: 3px solid @bordercol;
-	color: @white;
-	font-weight:bold; 
-	//this commment won't show up
-	background-color:@bgcol; 
-	/* this comment will show up */
-	padding:20px;
-	margin-bottom:10px;
-	width:@div_width;
-}
-</pre></code>
-				</div>
-				
-				<div class="codebox css">
-<code class="language-css"><pre>
-/* Import a normal CSS file -
- this works in normal CSS as well */
-@import "import.css";
-
-div.testbox {
-  border:3px solid #b7ff93;
-  color:#ff0000;
-  font-weight:bold;
-  background-color:#c3ffad; 
-  /* this comment will show up */
-  padding:20px;
-  margin-bottom:10px;
-  width:400px;
-}
-</pre></code>
-				</div>
-			</div>			
-			<div class="example5">
-				<div class='testbox'>
-					<p>This text is white. Or is it?<p>
-				</div>
-				<div class='importtest'>
-					I'm green!
+	</pre></code>
+					</div>
+					
+					<div class="codebox css">
+	<code class="language-css"><pre>
+	div.testbox {
+	  border:3px solid #b7ff93;
+	  color:#444444;
+	  background-color:#c3ffad;
+	  padding:20px;
+	  margin-bottom:10px;
+	  font-weight:bold;
+	  width:300px;
+	}
+	div.testbox_two {
+	  border:3px dashed #ff0000;
+	  color:#ff0000;
+	  background-color:#ffcccc;
+	  padding:20px;
+	  margin-bottom:10px;
+	  font-weight:bold;
+	  width:400px;
+	}
+	</pre></code>
+					</div>
 				</div>			
-			</div>
-			
-			<div class="below-code">
-				<ul>
-					<li>Local definitions overwrite global definitions</li>
-				</ul>
-			</div>				
-		</div>
-		
-		<div class="slide">
-			<h1>Language Features</h1>
-		<div class="body">
-		<h2>Namespaces</h2>
-			<div class="dualcode">
-				<div class="codebox less">
-<code class="language-css"><pre>
-@bordercol: #B7FF93;
-@bgcol: #C3FFAD;
-@fontcol: #444444;
-@div_width: 400px;
-
-.namespace_test
-{
-	.namespace1()
-	{
-		color:#FF0000;
-	}
-}
-
-div.testbox
-{
-	border: 3px solid @bordercol;
-	font-weight:bold; 
-	background-color:@bgcol;
-	padding:20px;
-	margin-bottom:10px;
-	width:@div_width;
-	.namespace_test > .namespace1;
-}
-</pre></code>
-				</div>
 				
-				<div class="codebox css">
-<code class="language-css"><pre>
-div.testbox {
-  border:3px solid #b7ff93;
-  font-weight:bold;
-  background-color:#c3ffad;
-  padding:20px;
-  margin-bottom:10px;
-  width:400px;
-  color:#ff0000;
-}
-</pre></code>
+				<div class="example3">
+					<div class='testbox'>
+						Hello
+					</div>
+					<div class='testbox_two'>
+						Goodbye!
+					</div>					
 				</div>
-			</div>			
-			<div class="example6">
-				<div class='testbox'>
-					<p>This text should be red</p>
+					
+				<div class="below-code">
+					<ul>
+						<li>Similar to functions</li>
+						<li>Do not become actual CSS classes</li>
+					</ul>
+				</div>				
+			</div>
+			</div>
+			
+			<div class="slide" name="nested">
+				<h1>Language Features</h1>
+				<div class="body">
+				<h2>Nested Structure</h2>
+					<div class="dualcode">
+						<div class="codebox less">			
+		<code><pre>
+		@bordercol: #B7FF93; @bgcol: #C3FFAD;
+		@fontcol: #0000FF; @div_width: 400px;
+		@coltwo: #FF0000; @bgcoltwo: #FFCCCC;
+
+		.test-mixin(@width)
+		{
+			padding:20px;
+			margin-bottom:10px;
+			font-weight: bold;
+			width:@width;
+		}
+
+		div.testbox
+		{
+			border: 3px solid @bordercol;
+			background-color:@bgcol;
+			.test-mixin(300px);
+			
+			p
+			{
+				color: @fontcol;
+			}
+		}
+
+		div.testbox_two
+		{
+			border:3px dashed @coltwo;
+			background-color:@bgcoltwo;
+			.test-mixin(@div_width);
+			
+			p
+			{
+				color: @coltwo;
+			}
+		}
+		</pre></code>
+						</div>
+						
+						<div class="codebox css">
+		<code class="language-css">
+		<pre>
+		div.testbox {
+		  border:3px solid #b7ff93;
+		  background-color:#c3ffad;
+		  padding:20px;
+		  margin-bottom:10px;
+		  font-weight:bold;
+		  width:300px;
+		}
+		div.testbox p { color:#0000ff; }
+		div.testbox_two {
+		  border:3px dashed #ff0000;
+		  background-color:#ffcccc;
+		  padding:20px;
+		  margin-bottom:10px;
+		  font-weight:bold;
+		  width:400px;
+		}
+		div.testbox_two p { color:#ff0000; }
+		</pre>
+			</code>
+						</div>
+					</div>			
+					
+					<div class="example4">
+						<div class='testbox'>
+							<p>Hello - I should be blue</p>
+						</div>
+						<div class='testbox_two'>
+							<p>Goodbye - I am red!</p>
+						</div>									
+					</div>
+						
+					<div class="below-code">
+						<ul>
+							<li>Compiles hierarchically</li>
+							<li>Easy to visualize structure</li>
+						</ul>
+					</div>				
 				</div>
 			</div>
 			
-			<div class="below-code">
-				<ul>
-					<li>Lets you use just part of a mix-in</li>
-				</ul>
-			</div>				
-		</div>
-		
-		<div class="slide">
-			<h1>Language Features</h1>
-			<div class="body">
-			<h2>Et Cetera</h2>
-			<ul>
-				<li>Tons of color functions, JavaScript parsing, etc</li>
-				<li>Guard expressions (if statements)</li>
-				<li>Essentially a programming language</li>
-			</ul>
-			<h2>Other Notes</h2>
-			<ul>
-				<li>Not always worth using, but can save a lot of time</li>
-				<li>Offers flexibility, increased maintenance</li>
-			</ul>
+			<div class="slide" name="sci">
+				<h1>Language Features</h1>
+				<div class="body">
+				<h2>Scope, Comments, Importing</h2>
+					<div class="dualcode">
+						<div class="codebox less">
+							<code class="language-css">
+								<pre>
+		/* Import a normal CSS file -
+		 this works in normal CSS as well */
+		@import "import.css";
+
+		@bordercol: #B7FF93;
+		@bgcol: #C3FFAD;
+		@fontcol: #444444;
+		@div_width: 400px;
+		@white: #FFFFFF;
+
+		div.testbox
+		{
+			@white: #FF0000;
+			border: 3px solid @bordercol;
+			color: @white;
+			font-weight:bold; 
+			//this commment won't show up
+			background-color:@bgcol; 
+			/* this comment will show up */
+			padding:20px;
+			margin-bottom:10px;
+			width:@div_width;
+		}
+		</pre>
+							</code>
+						</div>
+						
+						<div class="codebox css">
+		<code class="language-css"><pre>
+		/* Import a normal CSS file -
+		 this works in normal CSS as well */
+		@import "import.css";
+
+		div.testbox {
+		  border:3px solid #b7ff93;
+		  color:#ff0000;
+		  font-weight:bold;
+		  background-color:#c3ffad; 
+		  /* this comment will show up */
+		  padding:20px;
+		  margin-bottom:10px;
+		  width:400px;
+		}
+		</pre></code>
+						</div>
+					</div>			
+					<div class="example5">
+						<div class="testbox">
+							<p>This text is white. Or is it?</p>
+						</div>
+						<div class="importtest">
+							I'm green!
+						</div>			
+					</div>
+					
+					<div class="below-code">
+						<ul>
+							<li>Local definitions overwrite global definitions</li>
+						</ul>
+					</div>				
+				</div>
 			</div>
+			
+			<div class="slide" name="namespace">
+				<h1>Language Features</h1>
+				<div class="body">
+				<h2>Namespaces</h2>
+					<div class="dualcode">
+						<div class="codebox less">
+							<code class="language-css"><pre>
+		@bordercol: #B7FF93;
+		@bgcol: #C3FFAD;
+		@fontcol: #444444;
+		@div_width: 400px;
+
+		.namespace_test
+		{
+			.namespace1()
+			{
+				color:#FF0000;
+			}
+		}
+
+		div.testbox
+		{
+			border: 3px solid @bordercol;
+			font-weight:bold; 
+			background-color:@bgcol;
+			padding:20px;
+			margin-bottom:10px;
+			width:@div_width;
+			.namespace_test > .namespace1;
+		}
+							</pre></code>
+						</div>
+					
+						<div class="codebox css">
+							<code class="language-css"><pre>
+		div.testbox {
+		  border:3px solid #b7ff93;
+		  font-weight:bold;
+		  background-color:#c3ffad;
+		  padding:20px;
+		  margin-bottom:10px;
+		  width:400px;
+		  color:#ff0000;
+		}
+							</pre></code>
+						</div>
+					</div>			
+					<div class="example6">
+						<div class='testbox'>
+							<p>This text should be red</p>
+						</div>
+					</div>
+					
+					<div class="below-code">
+						<ul>
+							<li>Lets you use just part of a mix-in</li>
+						</ul>
+					</div>				
+				</div>
+			</div>
+			<div class="slide" name="etc">
+				<h1>Language Features</h1>
+				<div class="body">
+				<h2>Et Cetera</h2>
+				<ul>
+					<li>Tons of color functions, JavaScript parsing, etc</li>
+					<li>Guard expressions (if statements)</li>
+					<li>Essentially a programming language</li>
+				</ul>
+				<h2>Other Notes</h2>
+				<ul>
+					<li>Not always worth using, but can save a lot of time</li>
+					<li>Offers flexibility, increased maintenance</li>
+				</ul>
+				</div>
+			</div>
+			
 		</div>
-		
 	
 	</body>
 </html>
