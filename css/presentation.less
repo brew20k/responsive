@@ -1,0 +1,414 @@
+/* Import a normal CSS file - this works in normal CSS as well */
+@import "import.css";
+
+			
+@bgcolor: color(`less_keyColor`);
+@fgcolor:#FFFFFF;
+
+@grid-size:18px;
+
+*
+{
+	margin:0px;
+	padding:0px;
+}
+
+.title-colors(@bgcol)
+{ 
+  color: lighten(@bgcol,70%);
+  background-color: @bgcol;
+}
+
+
+.body-colors(@bgcol)
+{
+	color:#000000;
+	background-color:darken(@fgcolor,5%);
+}
+
+.subtitle-colors(@bgcol)
+{
+	color:@bgcol;	
+}
+
+.color-key
+{
+	color:@bgcolor;
+}
+
+.fullsize
+{
+	height:100%;
+}
+
+html
+{
+	.fullsize
+}
+
+body
+{
+	font-family:Trebuchet,Arial,Sans Serif;
+	.fullsize;
+	
+	
+}
+
+h1
+{
+	.title-colors(@bgcolor);	
+	font-size:@grid-size*2;	
+	padding:@grid-size;	
+	
+}
+
+.clear
+{
+	clear:both;
+}
+
+a
+{
+	color:@bgcolor;
+}
+
+a:hover
+{
+	color:lighten(@bgcolor,20%);
+}
+
+a:active
+{
+	color:darken(@bgcolor,20%);
+}
+
+
+div.slide
+{
+
+	text-align:center;
+	min-height:100%;
+	
+	
+	div.body
+	{		
+		
+		.body-colors(@bgcolor);
+		
+		text-align:left;
+		min-height:@grid-size*20;
+		padding:@grid-size;
+		margin:0px auto;
+		margin-top:@grid-size;
+		width:70%;
+		
+		
+		h2
+		{
+			font-family:Georgia,Times New Roman, Serif;
+			font-weight:normal;
+			font-size:@grid-size*1.5;
+			
+			padding:@grid-size*.5;
+			padding-left:0px;
+			color:@bgcolor;
+			border-bottom:4px solid @bgcolor;
+			
+			width:50%;
+			
+			//.subtitle-colors(@bgcolor);
+			
+
+		}
+
+		ul,li
+		{
+			padding-bottom:@grid-size;
+			h2
+			{
+				border-bottom:none;
+			}
+		}
+
+		ul
+		{
+			padding-top:@grid-size;
+		}
+
+		li
+		{
+			margin-left:@grid-size;
+		}
+		
+		.float-right
+		{
+			float:right;
+			margin:@grid-size;
+			margin-top:@grid-size*2;
+			margin-right:0%;
+		}
+		
+		.slide-image
+		{
+			.float-right;
+			
+		}
+		
+		.codebox
+		{
+			background-color:#DEDEDE;
+			color:darken(@bgcolor,50%);
+			font-family:Courier New, Courier;
+			width:30%;
+			min-width:200px;
+			margin-left:5%;
+			padding:@grid-size;
+			padding-top:@grid-size*4;
+			
+			.class
+			{
+				color:lighten(@bgcolor,10%);
+			}
+			
+			.property
+			{
+				color:spin(@bgcolor,30);
+				padding-left:@grid-size;
+			}
+			
+			.variable
+			{
+				color:spin(@bgcolor,180);
+				padding-left:0px;
+			}
+			
+			.value
+			{
+				color:spin(@bgcolor,90);
+				padding-left:@grid-size * .5;
+			}
+			
+		}
+		
+		.dualcode
+		{
+			margin-top:@grid-size;
+			
+			.less
+			{
+				float:left;
+				background-image:url('../img/less_bg.png');
+				background-position:right top;
+				background-repeat:no-repeat;
+			}			
+			
+			.css
+			{
+				float:right;
+				margin-left:0px;
+				margin-right:5%;
+				background-color:#DDDDDD;
+				background-image:url('../img/css_bg.png');
+				background-position:right top;
+				background-repeat:no-repeat;
+			}			
+						
+		}
+		
+		.example
+		{
+			clear:both;
+			padding:30px;
+		}
+		
+		.example1
+		{
+			.example;
+			
+			@bordercol: #B7FF93;
+			@bgcol: #C3FFAD;
+			@fontcol: #444444;
+			@div_width: 400px;
+
+			div.testbox
+			{
+				border: 3px solid @bordercol;
+				color: @fontcol;
+				font-weight:bold;
+				background-color:@bgcol;
+				padding:20px;
+				margin-bottom:10px;
+				width:@div_width;
+			}
+		}
+		
+		.example2
+		{
+			.example;
+			
+			.test-mixin {
+				  padding:20px;
+				  margin-bottom:10px;
+				  font-weight:bol;
+				  width:400px;
+				}
+				div.testbox {
+				  border:3px solid #b7ff93;
+				  color:#444444;
+				  background-color:#c3ffad;
+				  padding:20px;
+				  margin-bottom:10px;
+				  font-weight:bol;
+				  width:400px;
+				}
+				
+				div.testbox_two {
+				  border:3px dashed #ff0000;
+				  color:#ff0000;
+				  background-color:#ffcccc;
+				  padding:20px;
+				  margin-bottom:10px;
+				  font-weight:bol;
+				  width:400px;
+				}
+		}
+		
+		.example3
+		{
+			.example;
+			
+			@bordercol: #B7FF93;
+			@bgcol: #C3FFAD;
+			@fontcol: #444444;
+			@div_width: 400px;
+			@coltwo: #FF0000;
+			@bgcoltwo: #FFCCCC;
+
+			.test-mixin(@width)
+			{
+				padding:20px;
+				margin-bottom:10px;
+				font-weight: bold;
+				width:@width;
+			}
+
+			div.testbox
+			{
+				border: 3px solid @bordercol;
+				color: @fontcol;
+				background-color:@bgcol;
+				.test-mixin(300px);
+			}
+
+			div.testbox_two
+			{
+				border:3px dashed @coltwo;
+				color: @coltwo;
+				background-color:@bgcoltwo;
+				.test-mixin(@div_width);
+			}
+		}
+		
+		.example4
+		{
+			.example;
+			
+			@bordercol: #B7FF93; @bgcol: #C3FFAD;
+			@fontcol: #0000FF; @div_width: 400px;
+			@coltwo: #FF0000; @bgcoltwo: #FFCCCC;
+
+			.test-mixin(@width)
+			{
+				padding:20px;
+				margin-bottom:10px;
+				font-weight: bold;
+				width:@width;
+			}
+
+			div.testbox
+			{
+				border: 3px solid @bordercol;
+				background-color:@bgcol;
+				.test-mixin(300px);
+				
+				p
+				{
+					color: @fontcol;
+				}
+			}
+
+			div.testbox_two
+			{
+				border:3px dashed @coltwo;
+				background-color:@bgcoltwo;
+				.test-mixin(@div_width);
+				
+				p
+				{
+					color: @coltwo;
+				}
+			}		
+		}
+		
+		.example5
+		{
+			.example;
+
+			@bordercol: #B7FF93;
+			@bgcol: #C3FFAD;
+			@fontcol: #444444;
+			@div_width: 400px;
+			@white: #FFFFFF;
+
+			div.testbox
+			{
+				@white: #FF0000;
+				border: 3px solid @bordercol;
+				color: @white;
+				font-weight:bold; //this commment won't show up
+				background-color:@bgcol; /* this comment will show up */
+				padding:20px;
+				margin-bottom:10px;
+				width:@div_width;
+			}
+		}
+		
+		.example6
+		{
+			.example;
+			
+			@bordercol: #B7FF93;
+			@bgcol: #C3FFAD;
+			@fontcol: #444444;
+			@div_width: 400px;
+
+			.namespace_test
+			{
+				.namespace1()
+				{
+					color:#FF0000;
+				}
+			}
+
+			div.testbox
+			{
+				border: 3px solid @bordercol;
+				font-weight:bold; 
+				background-color:@bgcol;
+				padding:20px;
+				margin-bottom:10px;
+				width:@div_width;
+				.namespace_test > .namespace1;
+			}
+			
+			
+		}
+		
+		.below-code
+		{
+			margin-left:10%;
+			clear:both;
+		}
+		
+	}
+}
