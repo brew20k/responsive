@@ -213,93 +213,6 @@ strong { font-weight: bold; }
 /* page styles
 --------------------------------------------- */
 
-body.presentation {
-	overflow: hidden;
-}
-
-#presentation {
-	background: rgba(0, 0, 0, .85);
-	display: block;
-	height: 100%;
-	position: absolute;
-	width: 100%;
-	z-index: 110;
-	-webkit-user-select: none;
-	
-	&.hidden {
-		display: none;
-	}
-	
-	.close {
-		background: url(img/close-button.png);
-		cursor: pointer;
-		height: 30px;
-		width: 30px;
-		position: absolute;
-		top: 12px;
-		right: 12px;
-	}
-	
-	.close:hover {
-		-webkit-transform: scale(1.05);
-	}
-	
-	.close:active {
-		-webkit-transform: scale(0.95);
-	}
-	
-	.slide {
-		background: #FFF;
-		height: 90%;
-		width: 90%;
-		display: none;
-		margin: 5%;
-		-webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, .5);
-	}
-	
-	.slide.active {
-		display: block;
-	}
-	
-	.arrow-left {
-		cursor: pointer;
-		background: url(img/arrow-left.png) no-repeat;
-		height: 50px;
-		position: absolute;
-		top: 50%;
-		margin-top: -25px;
-		left: 10px;
-		width: 30px;
-	}
-	
-	.arrow-left:hover {
-		-webkit-transform: scale(1.05);
-	}
-	
-	.arrow-left:active {
-		-webkit-transform: scale(0.95);
-	}
-	
-	.arrow-right {
-		cursor: pointer;
-		background: url(img/arrow-right.png) no-repeat;
-		height: 50px;
-		position: absolute;
-		top: 50%;
-		margin-top: -25px;
-		right: 10px;
-		width: 30px;
-	}
-	
-	.arrow-right:hover {
-		-webkit-transform: scale(1.05);
-	}
-	
-	.arrow-right:active {
-		-webkit-transform: scale(0.95);
-	}
-}
-
 #page {
 	font-size: 1em; /* 16px / 16px */
 	margin: 0 auto;
@@ -847,72 +760,11 @@ footer {
 <script type="text/javascript" src="js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script type="text/javascript">
-
-$(document).ready(function() {
-
-	$(".presentation-button").click(function() {
-		$("#presentation").removeClass("hidden").css('margin-top', $("body").scrollTop());
-		$("body").addClass("presentation");
-	});
-	
-	$("#presentation .close").click(function() {
-		$("#presentation").addClass("hidden");
-		$("body").removeClass("presentation");
-	});
-	
-	$("#presentation .arrow-right").click(function() {
-		
-		var current = $("#presentation .slide.active");
-		
-		if(current.length == 0) return;
-		
-		var next = $(current).next(".slide");
-		
-		if(next.length == 0) return;
-		
-		current.removeClass("active");
-		next.addClass("active");
-		
-	});
-	
-	$("#presentation .arrow-left").click(function() {
-		
-		var current = $("#presentation .slide.active");
-		
-		if(current.length == 0) return;
-		
-		var prev = $(current).prev(".slide");
-		
-		if(prev.length == 0) return;
-		
-		current.removeClass("active");
-		prev.addClass("active");
-		
-	});
-
-});
-
 </script>
 
 </head>
 
 <body>
-
-<div id="presentation" class="hidden">
-
-	<div class="close"></div>
-	
-	<div class="arrow-left"></div>
-	
-	<div class="slide active">One</div>
-	<div class="slide">Two</div>
-	<div class="slide">Three</div>
-	<div class="slide">Four</div>
-	
-	<div class="arrow-right"></div>
-
-</div>
 
 <div id="page">
 
