@@ -16,69 +16,69 @@
 
 <script type="text/javascript">
 
-$(document).ready(function() {
-
-$('#presentation-button').toggle(function() {
-		$('#page').addClass('presentation');
-	}, function() {
-		$('#page').removeClass('presentation');
-	});
-	
-});
-
 //$(document).ready(function() {
-//
-//	var currentPage = 0,
-//		scrollWindow = $(window),
-//		didScroll = false,
-//		preventScroll = false,
-//		presentationControls = $('#presentation-controls'),
-//		pageHeight = $(window).height();
-//
-//	$('#presentation-button').toggle(function() {
+
+//$('#presentation-button').toggle(function() {
 //		$('#page').addClass('presentation');
-//		var top = 0;
-//		var pageHeight = $('body').height();
-//		$('header, article, footer').not('.ignore').each(function() {
-//			$(this).css('top', top + 'px');
-//			top += pageHeight;
-//		});
-//		
 //	}, function() {
 //		$('#page').removeClass('presentation');
 //	});
 //	
-//	$('#presentation-up-button').click(function() {
-//		if($('#page.presentation').length == 0) return;
-//		if(currentPage > 0) {
-//			currentPage--;
-//			$('body').animate({scrollTop : pageHeight*currentPage}, 150);
-//			presentationControls.stop().animate({top : (20+pageHeight*currentPage)}, 150);
-//		}
-//	});
-//	
-//	$('#presentation-down-button').click(function() {
-//		if($('#page.presentation').length == 0) return;
-//		var pages = $('header, article, footer').not('.ignore').size();
-//		if(currentPage < pages-1) {
-//			currentPage++;
-//			$('body').animate({scrollTop : pageHeight*currentPage}, 150);
-//			presentationControls.stop().animate({top : (20+pageHeight*currentPage)}, 250);
-//		}
-//	});
-//		    
-//	$(window).scroll(function() {
-//	    didScroll = true;
-//	});
-//	
-//	setInterval(function() {
-//	    if ( didScroll && !preventScroll ) {
-//	        didScroll = false;
-//	        presentationControls.stop().animate({top : (20+$('body').scrollTop())}, 150);
-//	    }
-//	}, 250);
-//
 //});
+
+$(document).ready(function() {
+
+	var currentPage = 0,
+		scrollWindow = $(window),
+		didScroll = false,
+		preventScroll = false,
+		presentationControls = $('#presentation-controls'),
+		pageHeight = $(window).height();
+
+	$('#presentation-button').toggle(function() {
+		$('#page').addClass('presentation');
+		var top = 0;
+		var pageHeight = $('body').height();
+		$('header, article, footer').not('.ignore').each(function() {
+			$(this).css('top', top + 'px');
+			top += pageHeight;
+		});
+		
+	}, function() {
+		$('#page').removeClass('presentation');
+	});
+	
+	$('#presentation-up-button').click(function() {
+		if($('#page.presentation').length == 0) return;
+		if(currentPage > 0) {
+			currentPage--;
+			$('body').animate({scrollTop : pageHeight*currentPage}, 150);
+			presentationControls.stop().animate({top : (20+pageHeight*currentPage)}, 150);
+		}
+	});
+	
+	$('#presentation-down-button').click(function() {
+		if($('#page.presentation').length == 0) return;
+		var pages = $('header, article, footer').not('.ignore').size();
+		if(currentPage < pages-1) {
+			currentPage++;
+			$('body').animate({scrollTop : pageHeight*currentPage}, 150);
+			presentationControls.stop().animate({top : (20+pageHeight*currentPage)}, 250);
+		}
+	});
+		    
+	$(window).scroll(function() {
+	    didScroll = true;
+	});
+	
+	setInterval(function() {
+	    if ( didScroll && !preventScroll ) {
+	        didScroll = false;
+	        presentationControls.stop().animate({top : (20+$('body').scrollTop())}, 150);
+	    }
+	}, 250);
+
+});
 
 </script>
 
@@ -1179,11 +1179,11 @@ img.flexible {
 
 <body>
 
-<!--<div id="presentation-controls">
+<div id="presentation-controls">
 	<div id="presentation-button">Presentation</div>
 	<div id="presentation-up-button">Up</div>
 	<div id="presentation-down-button">Down</div>
-</div>-->
+</div>
 
 <div id="page">
 

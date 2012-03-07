@@ -1,0 +1,224 @@
+/**
+ * styles.css | Responsive Design v. 1.0 | 3.27.2012
+ */
+
+/* reset styles
+--------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+
+/* fix for older browsers
+--------------------------------------------- */	
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* global styles
+--------------------------------------------- */
+
+.clear { clear: both; }
+
+.lfloat { float: left; }
+.rfloat { float: right; }
+
+.left { text-align: left; }
+.center { text-align: center; }
+.right { text-align: right; }
+
+.underline { text-decoration: underline;}
+
+
+/* fluid grid
+--------------------------------------------- */	
+
+/* common styles */
+
+.columns_12, columns_6,
+.column_6, .column_4, .column_3, .column_2 {
+	float: left;
+}
+
+/* column wrappers */
+
+.columns_12, .columns_6 {
+	margin: 0 auto;
+}
+
+.columns_12 { width: 100%; }
+.columns_6 { width: (480 / 960) * 100%; }
+
+/* columns in 12 wide context */
+
+.column_12, .column_6, .column_4, .column_3. .column_2 {
+	margin: 0 ((10 / 960) * 100%);
+}
+
+.column_12 { width: (940 / 960) * 100%; }
+.column_6 { width: (460 / 960) * 100%; }
+.column_4 { width: (300 / 960) * 100%; }
+.column_3 { width: (220 / 960) * 100%; }
+.column_2 { width: (140 / 960) * 100%; }
+
+/* columns in 6 wide context */
+
+.columns_6 .column_4, .column_3, .column_2 { 
+	margin: 0 ((10 / 480) * 100%);
+}
+
+.columns_6 > .column_4 { width: (300 / 960) * 100%; }
+.columns_6 > .column_3 { width: (220 / 960) * 100%; }
+.columns_6 > .column_2 { width: (140 / 960) * 100%; }
+
+
+/* element templating
+--------------------------------------------- */	
+
+html {
+	
+}
+
+body {
+	
+}
+
+h1 {
+	
+}
+
+h2 {
+	
+}
+
+h3 {
+	
+}
+
+p {
+	
+}
+
+q {
+	
+}
+
+a {
+	
+}
+
+aside {
+	
+}
+
+figure {
+	
+}
+
+figcaption {
+	
+}
+
+strong { font-weight: bold; }
+
+pre {
+	
+}
+
+code {
+	
+}
+
+
+/* page formatting
+--------------------------------------------- */	
+
+#page {
+	
+}
+
+#page > header, #page > footer, #page > section,
+#page > section > article {
+	.columns_12; // full width by default
+}
+
+#page > section > header {
+	.column_12; // 12 column default
+}
+
+/* whatis formatting
+--------------------------------------------- */	
+
+#whatis {
+	
+}
+
+
+/* fluid grid formatting
+--------------------------------------------- */	
+
+#fluid-grid {
+	
+}
+
+
+/* flexible images formatting
+--------------------------------------------- */	
+
+#flexible-images {
+	
+}
+
+
+/* media query formatting
+--------------------------------------------- */	
+
+#media-queries {
+	
+}
+
+
+/* resources formatting
+--------------------------------------------- */	
+
+#resources {
+	
+}
