@@ -4,7 +4,13 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
 
 */
 pre code {
+  background-color: #222;
+  font-family: Consolas, Monaco, "Courier New", Courier, monospace;
+  font-weight: normal;
+  font-size: 0.75em; /* 12px / 16px */
+  color: #FFF;
   display: block;
+  line-height: 18px;
 }
 
 pre .comment,
@@ -13,7 +19,7 @@ pre .template_comment,
 pre .diff .header,
 pre .chunk,
 pre .apache .cbracket {
-  color: rgb(0, 128, 0);
+  color: #FFF;
 }
 
 pre .keyword,
@@ -24,9 +30,9 @@ pre .aggregate,
 pre .smalltalk .class,
 pre .winutils,
 pre .bash .variable,
-pre .tex .command {
-  color: #5677C4;
-  font-weight: bold;
+pre .tex .command,
+pre .at_rule {
+  color: #57BCAF;
 }
 
 pre .string,
@@ -49,7 +55,7 @@ pre .stream,
 pre .apache .tag,
 pre .date,
 pre .tex .formula {
-  color: rgb(163, 21, 21);
+  color: #FBFFBB;
 }
 
 pre .ruby .string,
@@ -77,6 +83,11 @@ pre .phpdoc,
 pre .javadoc,
 pre .xmlDocTag {
   color: rgb(128, 128, 128);
+}
+
+pre .attribute,
+pre .tag {
+  color: #F7FF84;
 }
 
 pre .vhdl .type { font-weight: bold; }
