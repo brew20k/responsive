@@ -370,6 +370,7 @@ body {
 
 #page > header > h1 {
 	background: url(img/title.png) center center no-repeat;
+	cursor: pointer;
 	height: 65px;
 	margin: 5.625em auto; /* 90px */
 	max-width: 100%; /* 360px / 360px */
@@ -1188,7 +1189,7 @@ img.flexible {
 
 	<header class="columns_12">
 	
-		<h1></h1>
+		<h1 onclick="location.href='index.html'"></h1>
 	
 	</header>
 	
@@ -1628,7 +1629,7 @@ img.flexible {
 			
 				<h3 class="column_12">Making Images Flexible</h3>
 			
-				<p class="column_12">Flexible images can be accomplished fairly easily. For more advanced cases, images at a variety of resolutions can be swapped in and out depending on the screen size, thus only loading the appropriate sized image for the situation.
+				<p class="column_12">Flexible images can be accomplished fairly easily. For more advanced cases, images at a variety of resolutions can be swapped in and out depending on the screen size, thus only loading the appropriate sized image for the situation.</p>
 				
 				<div class="column_12">
 					<figure class="formula">
@@ -1640,6 +1641,8 @@ img {
 </code><div class="syntax-tag">CSS</div></pre>
 					</figure>
 				</div>
+			
+				<p class="column_12">Applying <code>max-width: 100%</code> to an image forces it to constrain to the width of its parent container. If the image is not as large as its container, it simply is set to its native width.</p>
 			
 			</div>
 			
