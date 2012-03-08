@@ -557,11 +557,13 @@ img {
 			</div>
 			
 			<div class="column_12">
-				<pre><code>
-@media screen and (max-width: 460px) {
+				<pre id="inline-demo"><code>
+@media screen and (max-width: 500px) {
 
-  body {
+  code {
     background-color: #F00;
+    -moz-transition: all 300ms ease-in-out;
+    -webkit-transition: all 300ms ease-in-out;
   }
 
 }
@@ -572,10 +574,23 @@ img {
 			<p class="column_12">This sets the <code>background-color</code> to red when the screen is <strong>less than 460px wide.</strong></p>
 			
 			<div class="column_12">
-					<pre><code>
-&lt;link type="text/css" rel="stylesheet" href="styles.css" media="screen and (max-width: 460px)" /&gt;
+				<pre><code>
+&lt;link type="text/css" rel="stylesheet" href="styles.css" media="screen and (max-width: 500px)" /&gt;
 
 </code><div class="syntax-tag">HTML</div></pre>
+			</div>
+			
+			<div class="column_12">
+				<pre id="link-demo"><code>
+code {
+  box-shadow: 0 0 6px #4ad21e;
+  -moz-box-shadow: 0 0 6px #4ad21e;
+  -webkit-box-shadow: 0 0 6px #4ad21e;
+  -moz-transition: all 200ms ease-in-out;
+  -webkit-transition: all 200ms ease-in-out;
+}
+
+</code><div class="syntax-tag">CSS</div></pre>
 			</div>
 							
 			<p class="column_12">This uses an <strong>imported stylesheet</strong> when the screen is less than 460px wide.</p>
