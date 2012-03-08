@@ -164,7 +164,7 @@ h2 {
 	color: #CD4E24;
 	font: 1.5em "nimbus-sans", sans-serif; /* 24px / 16px */
 	letter-spacing: -0.05em;
-	margin: 2em 0 1em 0; /* 48px / 16px */
+	margin: 1.5em 0 1em 0; /* 48px / 16px */
 }
 
 h3 {
@@ -253,7 +253,7 @@ pre a {
 pre .syntax-tag {
 	background-color: #7EBC29;
 	color: #FFF;
-	font-family: 0.75em "Helvetica Neue", Helvetica, Arial;
+	font: 0.75em "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 600;
 	position: absolute;
 	padding: 5px 10px;
@@ -311,7 +311,7 @@ img.flexible {
 	background: transparent top left no-repeat;
 	cursor: pointer;
 	height: 64px;
-	margin-top: -42px;
+	margin-top: -46px;
 	position: absolute;
 	right: 0px;
 	width: 90px;
@@ -346,7 +346,7 @@ img.flexible {
 	text-indent: 2em;
 }
 
-#page .formula p {
+#page .formula {
 	background-color: #F8F8F8;
 	font-size: 1.25em;
 	font-weight: 300;
@@ -957,6 +957,12 @@ body.presentation #controls #next-slide {
 
 @media only screen and (max-width: 720px) {
 
+	#page h1 {
+		.background-size(240px 43.333333px);
+		margin: 4.5em auto 3.5em auto;
+		width: 280px; /* fixed */
+	}
+	
 	nav {
 		background-image: none;
 		padding-left: 0;
@@ -1018,20 +1024,7 @@ body.presentation #controls #next-slide {
 
 }
 
-@media only screen and (max-width: 319px) {
-	
-	#page {
-		overflow-x: hidden;
-	}
-	
-	#page h1 {
-		.background-size(240px 43.333333px);
-		width: 280px; /* fixed */
-	}
-	
-	#page header h1 {
-		margin: 3em auto;
-	}
+@media only screen and (max-width: 360px) {
 
 	nav ul {
 		width: 100%; /* 680px / 680px */
@@ -1042,8 +1035,10 @@ body.presentation #controls #next-slide {
 	}
 	
 	h3 {
-		margin: 1.5em 0 2em 0; /* 48px / 16px */
+		margin: 1.5em 0 1.5em 0; /* 48px / 16px */
 	}
+	
+	
 
 }
 
@@ -1091,6 +1086,16 @@ body.presentation #controls #next-slide {
 	#presentation-button {
 		background-image: url(../img/presentation-icon@2x.png);
 		.background-size(50px 50px);
+	}
+	
+	#controls #prev-slide {
+		background-image: url(../img/arrow-up@2x.png);
+		.background-size(50px 30px);
+	}
+	
+	#controls #next-slide {
+		background-image: url(../img/arrow-down@2x.png);
+		.background-size(50px 30px);
 	}
 
 }

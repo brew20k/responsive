@@ -20,6 +20,19 @@
 <script type="text/javascript" src="js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+
+<style type="text/css">
+
+#presentation-button {
+	display: none !important;
+}
+
+</style>
+	
+<![endif]-->
+
 <script type="text/javascript">
 
 $(document).ready(function() {
@@ -27,7 +40,6 @@ $(document).ready(function() {
 	var currentPage = 0,
 		scrollWindow = $(window),
 		didScroll = false,
-		preventScroll = false,
 		presentationControls = $('#controls'),
 		pageHeight = $(window).height(),
 		pageList = $('header, article, footer').not('.ignore');
@@ -94,15 +106,27 @@ $(document).ready(function() {
 	});
 	
 	setInterval(function() {
-	    if ( didScroll && !preventScroll ) {
+	    if ( didScroll ) {
 	        didScroll = false;
-	        presentationControls.stop().animate({top : (20+$('body').scrollTop())}, 150);
+	        presentationControls.stop().animate({top : (20+$('html, body').scrollTop())}, 150);
 	    }
 	}, 250);
 	
 });
 
+function scrollToAnchor(tag){
+	var anchor = $("a[name='" + tag + "']"); console.log(anchor);
+	if(anchor.length == 0) return;
+	$('html,body').animate({scrollTop: $(anchor).offset().top}, 300);
+}
+
+function scrollToTop(){
+	$('html,body').animate({scrollTop: $('body').offset().top}, 300);
+}
+
 </script>
+
+<script type="text/javascript" src="js/respond.min.js"></script>
 
 </head>
 
@@ -133,9 +157,9 @@ $(document).ready(function() {
 		
 			<nav>
 				<ul>
-					<li><a href="#grid">Fluid Grid</a></li>
-					<li><a href="#flexibleimages">Flexible Images</a></li>
-					<li><a href="#mediaqueries">Media Queries</a></li>
+					<li><a onclick="scrollToAnchor('fluidgrid')">Fluid Grid</a></li>
+					<li><a onclick="scrollToAnchor('flexibleimages')">Flexible Images</a></li>
+					<li><a onclick="scrollToAnchor('mediaqueries')">Media Queries</a></li>
 				</ul>
 			</nav>
 			
@@ -196,13 +220,15 @@ $(document).ready(function() {
 	
 	</section>
 	
+	<a name="fluidgrid"></a>
+	
 	<section id="fluid-grid">
 	
 		<header class="slide columns_12">
 		
 			<h2 class="column_12">
 				<span>Fluid Grid</span>
-				<div class="flag"></div>
+				<div class="flag" onclick="scrollToTop()"></div>
 			</h2>
 			
 			<p class="column_12">A fluid grid divides the canvas into equal sized <strong>columns</strong> separated by <strong>gutters</strong>.</p>
@@ -457,13 +483,15 @@ $(document).ready(function() {
 	
 	</section>
 	
+	<a name="flexibleimages"></a>
+	
 	<section id="flexible-images">
 	
 		<header class="slide columns_12">
 		
 			<h2 class="column_12">
 				<span>Flexible Images</span>
-				<div class="flag"></div>
+				<div class="flag" onclick="scrollToTop()"></div>
 			</h2>
 			
 			<p class="column_12">Flexible images resize proportionally to their container.</p>
@@ -479,16 +507,12 @@ $(document).ready(function() {
 			<p class="column_12">Flexible images can be accomplished fairly easily. For more advanced cases, images at a variety of resolutions can be swapped in and out depending on the screen size, thus only loading the appropriate sized image for the situation.</p>
 							
 			<div class="column_12">
-				<figure class="formula">
-					<pre>
-<code>
+<pre><code>
 img {
   max-width: 100%;
 }
 </code>
-						<div class="syntax-tag">CSS</div>
-					</pre>
-				</figure>
+<div class="syntax-tag">CSS</div></pre>
 			</div>
 		
 			<p class="column_12">Applying <code>max-width: 100%</code> to an image forces it to constrain to the width of its parent container. If the image is not as large as its container, it simply is set to its native width.</p>
@@ -497,13 +521,15 @@ img {
 	
 	</section>
 	
+	<a name="mediaqueries"></a>
+	
 	<section id="media-queries">
 		
 		<header class="slide">
 		
 			<h2>
 				<span>Media Queries</span>
-				<div class="flag"></div>
+				<div class="flag" onclick="scrollToTop()"></div>
 			</h2>
 			
 			<p>Media queries allow the use of different CSS styles depending on specific browser conditions (ex. min-width: 320px)</p>
@@ -512,9 +538,9 @@ img {
 			
 			<nav>
 				<ul>
-					<li>Fluid Grid</li>
-					<li>Flexible Images</li>
-					<li>Media Queries</li>
+					<li><a onclick="scrollToAnchor('fluidgrid')">Fluid Grid</a></li>
+					<li><a onclick="scrollToAnchor('flexibleimages')">Flexible Images</a></li>
+					<li><a onclick="scrollToAnchor('mediaqueries')">Media Queries</a></li>
 				</ul>
 			</nav>
 					
@@ -531,9 +557,7 @@ img {
 			</div>
 			
 			<div class="column_12">
-				<figure class="formula">
-					<pre>
-<code>
+				<pre><code>
 @media screen and (max-width: 460px) {
 
   body {
@@ -542,33 +566,22 @@ img {
 
 }
 
-</code>
-						<div class="syntax-tag">CSS</div>
-					</pre>
-				</figure>
+</code><div class="syntax-tag">CSS</div></pre>
 			</div>
 			
-			<p class="column_12">This sets the <code>background-color</code> to red when the screen is less than 460px wide.</p>
+			<p class="column_12">This sets the <code>background-color</code> to red when the screen is <strong>less than 460px wide.</strong></p>
 			
 			<div class="column_12">
-				<figure class="formula">
-					<pre>
-<code>
+					<pre><code>
 &lt;link type="text/css" rel="stylesheet" href="styles.css" media="screen and (max-width: 460px)" /&gt;
 
-</code>
-						<div class="syntax-tag">HTML</div>
-					</pre>
-				</figure>
+</code><div class="syntax-tag">HTML</div></pre>
 			</div>
 							
-			<p class="column_12">This uses an imported stylesheet when the screen is less than 460px wide.</p>
+			<p class="column_12">This uses an <strong>imported stylesheet</strong> when the screen is less than 460px wide.</p>
 							
 			<div class="column_12">
-				<figure class="formula">
-					<pre>
-<code>
-&lt;style type="text/css" media="screen"&gt
+<pre><code>&lt;style type="text/css" media="screen"&gt
 
 nav ul li {
   float: left;
@@ -585,15 +598,10 @@ nav ul li {
 }
 
 &lt;/style&gt;
-
-</code>
-						<div class="syntax-tag">CSS</div>
-					</pre>
-				</figure>
+</code><div class="syntax-tag">CSS</div></pre>
 			</div>
 			
 			<div class="column_12">
-				<figure class="formula">
 					<pre>
 <code>&lt;nav&gt;
   &lt;ul&gt;
@@ -602,18 +610,13 @@ nav ul li {
     &lt;li&gt;Media Queries&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;
-</code>
-						<div class="syntax-tag">HTML</div>
-					</pre>
-				</figure>
+</code><div class="syntax-tag">HTML</div></pre>
 			</div>
 			
-			<p class="column_12">This uses a block of CSS when the screen is less than 460px wide. The floats creating side-by-side nav buttons are removed, putting elements one after another for small displays.</p>
+			<p class="column_12">This uses a block of CSS when the screen is <strong>less than 460px wide</strong>. The floats creating side-by-side nav buttons are removed, putting elements one after another for small displays.</p>
 			
 			<div class="column_12">
-				<figure class="formula">
-					<pre>
-<code>
+					<pre><code>
 &lt;style type="text/css" media="screen and (min-width: 768px) and (max-width: 1024px)"&gt
 
 body {
@@ -622,13 +625,10 @@ body {
 
 &lt;/style&gt;
 
-</code>
-						<div class="syntax-tag">CSS</div>
-					</pre>
-				</figure>
+</code><div class="syntax-tag">CSS</div></pre>
 			</div>
 			
-			<p class="column_12">You can also chain a series of media query criteria for more specific styles, targeting an iPad sized screen for example.</p>
+			<p class="column_12">You can also <strong>chain</strong> a series of media query criteria for more specific styles, targeting an iPad sized screen for example.</p>
 		
 		</article>
 		
@@ -641,10 +641,10 @@ body {
 					<h3>When To Use Media Queries</h3>
 					
 					<ul>
-						<li>Removing floats to position horizontal content vertically</li>
+						<li>Removing <strong>floats</strong> to position horizontal content vertically</li>
 						<li>Reducing the amount of information to simpify a mobile site</li>
-						<li>Adding high resolution images for high pixel density displays</li>
-						<li>Altering font sizes to format on a mobile device</li>
+						<li>Adding high resolution images for <strong>high pixel density</strong> displays</li>
+						<li>Altering <strong>font sizes</strong> to format on a mobile device</li>
 					</ul>
 				</div>
 				
@@ -653,10 +653,10 @@ body {
 					<h3>Thoughts on Usability</h3>
 				
 					<ul>
-						<li>Use the standard set of resolution break points for devices</li>
-						<li>Animations can smooth the transition between stylesheets</li>
+						<li>Use the standard set of <strong>resolution break points</strong> for devices</li>
+						<li>Animations can smooth the <strong>transition</strong> between stylesheets</li>
 						<li>Dont confuse the user by defining different layouts and themes for different media queries</li>
-						<li>There are cases when a responsive mobile site is not the best solution</li>
+						<li>There are cases when a responsive mobile site is <strong>not the best solution</strong></li>
 					</ul>
 				</div>
 				
@@ -673,7 +673,7 @@ body {
 			<div class="column_12">				
 				<ul>
 					<li>Fully supported in IE9+, Firefox 3.5+, Chrome, Safari 4+, and Mobile Safari</li>
-					<li>RespondJS can be used to add legacy IE support</li>
+					<li><strong>RespondJS</strong> can be used to add legacy IE support</li>
 				</ul>
 			</div>
 			
