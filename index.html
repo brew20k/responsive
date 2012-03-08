@@ -108,7 +108,7 @@ $(document).ready(function() {
 	setInterval(function() {
 	    if ( didScroll ) {
 	        didScroll = false;
-	        presentationControls.stop().animate({top : (20+$('html, body').scrollTop())}, 150);
+	        presentationControls.stop().animate({top : (20+$(window).scrollTop())}, 150);
 	    }
 	}, 250);
 	
