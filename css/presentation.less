@@ -101,7 +101,7 @@ div.slide
 	{		
 		
 		.body-colors(@bgcolor);
-		
+		z-index:100000000;
 		text-align:left;
 		min-height:@grid-size*20;
 		padding:@grid-size;
@@ -163,13 +163,16 @@ div.slide
 		
 		.codebox
 		{
+			position:relative;
+			z-index:10000000;
 			background-color:#DEDEDE;
 			color:darken(@bgcolor,50%);
 			font-family:Courier New, Courier;
-			width:30%;
+			width:40%;
 			min-width:200px;
 			margin-left:5%;
 			padding:@grid-size;
+			padding-left:@grid-size /2 ;
 			padding-top:@grid-size*4;
 			
 			.class
@@ -195,11 +198,19 @@ div.slide
 				padding-left:@grid-size * .5;
 			}
 			
+			pre
+			{
+				z-order:1000000;
+				position:relative;
+			}
+			
 		}
 		
 		.dualcode
 		{
 			margin-top:@grid-size;
+			position:relative;
+			z-index:5;
 			
 			div.less
 			{
@@ -422,12 +433,13 @@ div.slide
 
 /* Slide Controls */
 
-.slidecontrols
-{
-	z-index:10000000;
+//.slidecontrols
+//{
+	//z-index:4;
+	
 	.slide_widget
 	{
-		z-index:10000000;
+		z-index:4;
 		position:fixed;
 		top:50%;
 		border:3px dashed @bgcolor;
@@ -436,6 +448,7 @@ div.slide
 		font-family:Georgia;
 		color:darken(@bgcolor,10%);
 		padding:1%;
+		text-align:center;	
 	}
 	.previous
 	{
@@ -452,7 +465,7 @@ div.slide
 		.slide_widget;
 		left:93.5%;		
 		width:5%;		
-		text-align:right;		
+		
 		border-right:none;		
 		padding-right:.5%;
 		
@@ -463,4 +476,4 @@ div.slide
 		color:@bgcolor;
 		background-color:lighten(@bgcolor,60%);
 	}
-}
+//}

@@ -164,14 +164,7 @@
 	
 	</head>
 	<body>
-	<div class="slidecontrols">
-			<a href="#" class="prevlink"><div class="previous">
-			previous
-			</div></a>
-			<a href="#" class="nextlink"><div class="next">
-			next
-			</div></a>
-	</div>
+	
 	<div class="slidecontainer">
 		<div class="slide" name="intro">
 		<h1>What is LESS?</h1>
@@ -217,36 +210,38 @@
 
 					<div class="codebox less">
 						<code><pre>
-	@bordercol: #B7FF93;
-	@bgcol: #C3FFAD;
-	@fontcol: #444444;
-	@div_width: 400px;
+@bordercol: #B7FF93;
+@bgcol: #C3FFAD;
+@fontcol: #444444;
+@div_width: 400px;
 
-	div.testbox
-	{
-		border: 3px solid @bordercol;
-		color: @fontcol;
-		font-weight:bold;
-		background-color:@bgcol;
-		padding:20px;
-		margin-bottom:10px;
-		width:@div_width;
-	}
+div.testbox
+{
+	border:3px solid @bordercol;
+	color:@fontcol;
+	font-weight:bold;
+	background-color:@bgcol;
+	padding:20px;
+	margin-bottom:10px;
+	width:@div_width;
+}
 	</pre></code>
 					</div>
 									
 					<div class="codebox css">
 					<code class="language-css"><pre>
-	div.testbox {
-	  border:3px solid #b7ff93;
-	  color:#444444;
-	  font-weight:bold;
-	  background-color:#c3ffad;
-	  padding:20px;
-	  margin-bottom:10px;
-	  width:400px;
-	}
+div.testbox {
+  border:3px solid #b7ff93;
+  color:#444444;
+  font-weight:bold;
+  background-color:#c3ffad;
+  padding:20px;
+  margin-bottom:10px;
+  width:400px;
+}
 					</pre></code>
+					</div>
+					<div class="clear">
 					</div>
 				</div>
 				
@@ -262,7 +257,7 @@
 					
 				<div class="below-code">
 					<ul>
-						<li>Variables are static, constant*</li>
+						<li>Variables are constant*</li>
 						<li>Can be percents, numbers, colors, etc</li>
 					</ul>
 				</div>
@@ -276,38 +271,37 @@
 		<h2>Mixins</h2>
 		<div class="dualcode">
 			<div class="codebox less">
-	<code>
-	<pre>
-	@bordercol: #B7FF93;
-	@bgcol: #C3FFAD;
-	@fontcol: #444444;
-	@div_width: 400px;
-	@coltwo: #FF0000;
-	@bgcoltwo: #FFCCCC;
+	<code><pre>
+@bordercol: #B7FF93;
+@bgcol: #C3FFAD;
+@fontcol: #444444;
+@div_width: 400px;
+@coltwo: #FF0000;
+@bgcoltwo: #FFCCCC;
 
-	.test-mixin
-	{
-		padding:20px;
-		margin-bottom:10px;
-		font-weight: bol;
-		width:@div_width;
-	}
+.test-mixin
+{
+	padding:20px;
+	margin-bottom:10px;
+	font-weight: bold;
+	width:@div_width;
+}
 
-	div.testbox
-	{
-		border: 3px solid @bordercol;
-		color: @fontcol;
-		background-color:@bgcol;
-		.test-mixin; //<--- mix-in
-	}
+div.testbox
+{
+	border: 3px solid @bordercol;
+	color: @fontcol;
+	background-color:@bgcol;
+	.test-mixin; // mix-in
+}
 
-	div.testbox_two
-	{
-		border:3px dashed @coltwo;
-		color: @coltwo;
-		background-color:@bgcoltwo;
-		.test-mixin; //<--- mix-in	
-	}
+div.testbox_two
+{
+	border:3px dashed @coltwo;
+	color: @coltwo;
+	background-color:@bgcoltwo;
+	.test-mixin; // mix-in	
+}
 	</pre>
 	</code>
 	</div>
@@ -318,7 +312,7 @@
 .test-mixin {
   padding:20px;
   margin-bottom:10px;
-  font-weight:bol;
+  font-weight:bold;
   width:400px;
 }
 div.testbox {
@@ -327,7 +321,7 @@ div.testbox {
   background-color:#c3ffad;
   padding:20px;
   margin-bottom:10px;
-  font-weight:bol;
+  font-weight:bold;
   width:400px;
 }
 div.testbox_two {
@@ -336,11 +330,13 @@ div.testbox_two {
   background-color:#ffcccc;
   padding:20px;
   margin-bottom:10px;
-  font-weight:bol;
+  font-weight:bold;
   width:400px;
 }</pre>
 </code>
 				</div>
+				<div class="clear">
+					</div>
 				</div>			
 				
 				<div class="example2">
@@ -402,6 +398,7 @@ div.testbox_two {
 					</div>
 					
 					<div class="codebox css">
+					
 	<code class="language-css"><pre>
 	div.testbox {
 	  border:3px solid #b7ff93;
@@ -423,6 +420,8 @@ div.testbox_two {
 	}
 	</pre></code>
 					</div>
+					<div class="clear">
+					</div>
 				</div>			
 				
 				<div class="example3">
@@ -432,6 +431,7 @@ div.testbox_two {
 					<div class='testbox_two'>
 						Goodbye!
 					</div>					
+					
 				</div>
 					
 				<div class="below-code">
@@ -450,68 +450,73 @@ div.testbox_two {
 					<div class="dualcode">
 						<div class="codebox less">			
 		<code><pre>
-		@bordercol: #B7FF93; @bgcol: #C3FFAD;
-		@fontcol: #0000FF; @div_width: 400px;
-		@coltwo: #FF0000; @bgcoltwo: #FFCCCC;
+@bordercol: #B7FF93;
+@bgcol: #C3FFAD;
+@fontcol: #0000FF;
+@div_width: 400px;
+@coltwo: #FF0000;
+@bgcoltwo: #FFCCCC;
 
-		.test-mixin(@width)
-		{
-			padding:20px;
-			margin-bottom:10px;
-			font-weight: bold;
-			width:@width;
-		}
+.test-mixin(@width)
+{
+	padding:20px;
+	margin-bottom:10px;
+	font-weight: bold;
+	width:@width;
+}
 
-		div.testbox
-		{
-			border: 3px solid @bordercol;
-			background-color:@bgcol;
-			.test-mixin(300px);
-			
-			p
-			{
-				color: @fontcol;
-			}
-		}
+div.testbox
+{
+	border: 3px solid @bordercol;
+	background-color:@bgcol;
+	.test-mixin(300px);
+	
+	p
+	{
+		color: @fontcol;
+	}
+}
 
-		div.testbox_two
-		{
-			border:3px dashed @coltwo;
-			background-color:@bgcoltwo;
-			.test-mixin(@div_width);
-			
-			p
-			{
-				color: @coltwo;
-			}
-		}
+div.testbox_two
+{
+	border:3px dashed @coltwo;
+	background-color:@bgcoltwo;
+	.test-mixin(@div_width);
+	
+	p
+	{
+		color: @coltwo;
+	}
+}
 		</pre></code>
 						</div>
 						
 						<div class="codebox css">
 		<code class="language-css">
 		<pre>
-		div.testbox {
-		  border:3px solid #b7ff93;
-		  background-color:#c3ffad;
-		  padding:20px;
-		  margin-bottom:10px;
-		  font-weight:bold;
-		  width:300px;
-		}
-		div.testbox p { color:#0000ff; }
-		div.testbox_two {
-		  border:3px dashed #ff0000;
-		  background-color:#ffcccc;
-		  padding:20px;
-		  margin-bottom:10px;
-		  font-weight:bold;
-		  width:400px;
-		}
-		div.testbox_two p { color:#ff0000; }
+div.testbox {
+  border:3px solid #b7ff93;
+  background-color:#c3ffad;
+  padding:20px;
+  margin-bottom:10px;
+  font-weight:bold;
+  width:300px;
+}
+div.testbox p { color:#0000ff; }
+div.testbox_two {
+  border:3px dashed #ff0000;
+  background-color:#ffcccc;
+  padding:20px;
+  margin-bottom:10px;
+  font-weight:bold;
+  width:400px;
+}
+div.testbox_two p { color:#ff0000; }
 		</pre>
 			</code>
 						</div>
+						<div class="clear">
+					</div>
 					</div>			
 					
 					<div class="example4">
@@ -540,51 +545,53 @@ div.testbox_two {
 						<div class="codebox less">
 							<code class="language-css">
 								<pre>
-		/* Import a normal CSS file -
-		 this works in normal CSS as well */
-		@import "import.css";
+/* Import a normal CSS file -
+ this works in normal CSS as well */
+@import "import.css";
 
-		@bordercol: #B7FF93;
-		@bgcol: #C3FFAD;
-		@fontcol: #444444;
-		@div_width: 400px;
-		@white: #FFFFFF;
+@bordercol: #B7FF93;
+@bgcol: #C3FFAD;
+@fontcol: #444444;
+@div_width: 400px;
+@white: #FFFFFF;
 
-		div.testbox
-		{
-			@white: #FF0000;
-			border: 3px solid @bordercol;
-			color: @white;
-			font-weight:bold; 
-			//this commment won't show up
-			background-color:@bgcol; 
-			/* this comment will show up */
-			padding:20px;
-			margin-bottom:10px;
-			width:@div_width;
-		}
+div.testbox
+{
+	@white: #FF0000;
+	border: 3px solid @bordercol;
+	color: @white;
+	font-weight:bold; 
+	//this commment won't show up
+	background-color:@bgcol; 
+	/* this comment will show up */
+	padding:20px;
+	margin-bottom:10px;
+	width:@div_width;
+}
 		</pre>
 							</code>
 						</div>
 						
 						<div class="codebox css">
 		<code class="language-css"><pre>
-		/* Import a normal CSS file -
-		 this works in normal CSS as well */
-		@import "import.css";
+/* Import a normal CSS file -
+ this works in normal CSS as well */
+@import "import.css";
 
-		div.testbox {
-		  border:3px solid #b7ff93;
-		  color:#ff0000;
-		  font-weight:bold;
-		  background-color:#c3ffad; 
-		  /* this comment will show up */
-		  padding:20px;
-		  margin-bottom:10px;
-		  width:400px;
-		}
+div.testbox {
+  border:3px solid #b7ff93;
+  color:#ff0000;
+  font-weight:bold;
+  background-color:#c3ffad; 
+  /* this comment will show up */
+  padding:20px;
+  margin-bottom:10px;
+  width:400px;
+}
 		</pre></code>
 						</div>
+						<div class="clear">
+					</div>
 					</div>			
 					<div class="example5">
 						<div class="testbox">
@@ -610,45 +617,47 @@ div.testbox_two {
 					<div class="dualcode">
 						<div class="codebox less">
 							<code class="language-css"><pre>
-		@bordercol: #B7FF93;
-		@bgcol: #C3FFAD;
-		@fontcol: #444444;
-		@div_width: 400px;
+@bordercol: #B7FF93;
+@bgcol: #C3FFAD;
+@fontcol: #444444;
+@div_width: 400px;
 
-		.namespace_test
-		{
-			.namespace1()
-			{
-				color:#FF0000;
-			}
-		}
+.namespace_test
+{
+	.namespace1()
+	{
+		color:#FF0000;
+	}
+}
 
-		div.testbox
-		{
-			border: 3px solid @bordercol;
-			font-weight:bold; 
-			background-color:@bgcol;
-			padding:20px;
-			margin-bottom:10px;
-			width:@div_width;
-			.namespace_test > .namespace1;
-		}
+div.testbox
+{
+	border: 3px solid @bordercol;
+	font-weight:bold; 
+	background-color:@bgcol;
+	padding:20px;
+	margin-bottom:10px;
+	width:@div_width;
+	.namespace_test > .namespace1;
+}
 							</pre></code>
 						</div>
 					
 						<div class="codebox css">
 							<code class="language-css"><pre>
-		div.testbox {
-		  border:3px solid #b7ff93;
-		  font-weight:bold;
-		  background-color:#c3ffad;
-		  padding:20px;
-		  margin-bottom:10px;
-		  width:400px;
-		  color:#ff0000;
-		}
+div.testbox {
+  border:3px solid #b7ff93;
+  font-weight:bold;
+  background-color:#c3ffad;
+  padding:20px;
+  margin-bottom:10px;
+  width:400px;
+  color:#ff0000;
+}
 							</pre></code>
 						</div>
+						<div class="clear">
+					</div>
 					</div>			
 					<div class="example6">
 						<div class='testbox'>
@@ -681,6 +690,13 @@ div.testbox_two {
 			</div>
 			
 		</div>
+	
+			<a href="#" class="prevlink"><div class="previous">
+			previous
+			</div></a>
+			<a href="#" class="nextlink"><div class="next">
+			next
+			</div></a>
 	
 	</body>
 </html>
