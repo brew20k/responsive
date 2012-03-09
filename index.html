@@ -295,54 +295,6 @@ function scrollToTop(){
 		
 		<article class="slide">
 		
-			<h3>Building Proportionally</h3>
-			
-			<div class="column_12">
-				<figure class="formula"><p>target &divide; context = result</p></figure>
-			</div>
-			
-			<div class="columns_12">
-				<ul class="column_6">
-					<li>Traditional element width written in absolute terms (ex. width: 300px)</li>
-					<li>Write CSS in percentages (ex. width: 50%)</li>
-					<li>Relative dimensions with respect to context, the parent element</li>
-					<li>200px / 960px = 20.83333333333%</li>
-					<li>Fonts, dimensions, padding, and margins all in percents or ems</li>
-				</ul>
-				
-				<div class="column_6">
-				
-<pre style="margin-top: 0;"><code>
-body {
-  width: 90%; /* somewhat arbitrary, base of 960px */
-}
-
-#page {
-  width: 100%; /* 960px / 960px */
-}
-
-left-column {
-  width: 62.5%; /* 600px / 960px */
-}
-
-right-column {
-  width: 37.5%; /* 360px / 960px */
-}
-
-</code><div class="syntax-tag">CSS</div></pre>
-				
-				</div>
-				
-				<div class="clear"></div>
-				
-			</div>
-			
-			
-		
-		</article>
-		
-		<article class="slide">
-		
 			<h3>Font Sizes</h3>
 			
 			<p class="column_12">Designing your site's font sizes in relative terms is the first step in creating a responsive site. The value of <strong>1 em</strong> represents 100% of the immediate parent element's <code>font-size;</code> css attribute. Be sure to set the <code>font-size;</code> on your <code>&lt;body&gt;</code> tag. This will set the base font-size of your website.</p>
@@ -399,39 +351,13 @@ body {
 			</div>
 			
 			<div class="columns_12">
-				<ul class="column_6">
+				<ul class="colum_12">
 					<li>Traditional element width written in absolute terms (ex. width: 300px)</li>
 					<li>Write CSS in percentages (ex. width: 50%)</li>
 					<li>Relative dimensions with respect to context, the parent element</li>
 					<li>200px / 960px = 20.83333333333%</li>
 					<li>Fonts, dimensions, padding, and margins all in percents or ems</li>
 				</ul>
-				
-				<div class="column_6">
-				
-<pre style="margin-top: 0;"><code>
-body {
-  width: 90%; /* somewhat arbitrary, base of 960px */
-}
-
-#page {
-  width: 100%; /* 960px / 960px */
-}
-
-left-column {
-  width: 62.5%; /* 600px / 960px */
-}
-
-right-column {
-  width: 37.5%; /* 360px / 960px */
-}
-
-</code><div class="syntax-tag">CSS</div></pre>
-				
-				</div>
-				
-				<div class="clear"></div>
-				
 			</div>
 										
 			<p class="column_12">In order to have your site dynamically resize as the user changes the browser width and height, you must define all your element dimensions in relative terms. Just as font sizes are determined with respect to their parent element, so are dimensions. A width of 100% represents the full width of the element's parent.</p>
@@ -443,18 +369,15 @@ right-column {
 }
 
 #my_page header {
-  margin: 0 1.04166666%; /* 10px / 960px */
-  width: 97.9166666% /* 940px / 960px */
+  width: 100% /* 960px / 960px */
 }
 
 #my_page section {
-  margin: 0 1.04166666%; /* 10px / 960px */
-  width: 64.58333333%; /* 620px / 960px */
+  width: 62.5%; /* 600px / 960px */
 }
 
 #my_page aside {
-  margin: 0 1.04166666%; /* 10px / 960px */
-  width: 31.25%; /* 300px / 960px */
+  width: 37.5%; /* 360px / 960px */
 }</code>
 <div class="syntax-tag">CSS</div></pre>
 			</div>
@@ -463,19 +386,13 @@ right-column {
 				<div class="dimension-example">
 					<header class="ignore">
 						<div class="filler"><span>#my_page header</span></div>
-						<div class="margin-left"></div>
-						<div class="margin-right"></div>
 					</header>
 					<div class="columns_12">
 						<section>
 							<div class="filler"><span>#my_page section</span></div>
-							<div class="margin-left"></div>
-							<div class="margin-right"></div>
 						</section>
 						<aside>
 							<div class="filler"><span>#my_page aside</span></div>
-							<div class="margin-left"></div>
-							<div class="margin-right"></div>
 						</aside>
 						<div class="clear"></div>
 				</div>
@@ -497,20 +414,20 @@ right-column {
 
 #my_page header {
   margin: 0 1.04166666%; /* 10px / 960px */
-  padding: 0 1.06382979%; /* 10px / 940px */
-  width: 97.9166666% /* 940px / 960px */
+  padding: 1.04166666%; /* 10px / 960px */
+  width: 95.8333333333% /* 940px / 960px */
 }
 
 #my_page section {
   margin: 0 1.04166666%; /* 10px / 960px */
-  padding: 0 1.61290323%; /* 10px / 940px */
-  width: 64.58333333%; /* 620px / 960px */
+  padding: 1.04166666%; /* 10px / 960px */
+  width: 62.5%; /* 620px / 960px */
 }
 
 #my_page aside {
   margin: 0 1.04166666%; /* 10px / 960px */
-  padding: 0 3.33333333%; /* 10px / 300px */
-  width: 31.25%; /* 300px / 960px */
+  padding: 1.04166666%; /* 10px / 300px */
+  width: 29.16666666%; /* 300px / 960px */
 }</code>
 <div class="syntax-tag">CSS</div></pre>
 			</div>
@@ -570,10 +487,11 @@ right-column {
 img {
   max-width: 100%;
 }
+
 </code><div class="syntax-tag">CSS</div></pre>
 			</div>
 		
-			<p class="column_12">Applying <code>max-width: 100%</code> to an image forces it to constrain to the width of its parent container. If the image is not as large as its container, it simply is set to its native width.</p>
+			<p class="column_12">Applying <code>max-width: 100%</code> to an image <strong>forces it to constrain to the width of its parent container</strong>. If the image is not as large as its container, it simply is set to its native width.</p>
 		
 		</article>
 	
@@ -673,6 +591,7 @@ nav ul li {
 }
 
 &lt;/style&gt;
+
 </code><div class="syntax-tag">CSS</div></pre>
 			</div>
 			
@@ -704,9 +623,23 @@ body {
 			</div>
 			
 			<p class="column_12">You can also <strong>chain</strong> a series of media query criteria for more specific styles, targeting an iPad sized screen for example.</p>
-		
-			<div class="clear"></div>
 			
+			<div class="column_12">
+					<pre><code>
+&lt;style type="text/css" media="screen and (min-device-pixel-ratio:1.5)"&gt
+
+#logo {
+  background-image: url(logo@2x.png);
+  -webkit-background-size: 100px 50px;
+}
+
+&lt;/style&gt;
+
+</code><div class="syntax-tag">CSS</div></pre>
+			</div>
+			
+			<p class="column_12">Media queries are especially useful if you are trying to target high resolution devices such as the iPhone's retina display.</p>
+					
 		</article>
 		
 		<article class="slide temp-offset">
@@ -732,7 +665,7 @@ body {
 					<ul>
 						<li>Use the standard set of <strong>resolution break points</strong> for devices</li>
 						<li>Animations can smooth the <strong>transition</strong> between stylesheets</li>
-						<li>Dont confuse the user by defining different layouts and themes for different media queries</li>
+						<li>Don't confuse the user by defining different layouts and themes for different media queries</li>
 						<li>There are cases when a responsive mobile site is <strong>not the best solution</strong></li>
 					</ul>
 				</div>
