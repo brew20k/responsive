@@ -144,8 +144,10 @@ function scrollToTop(){
 
 <div id="page">
 
+	<a id="lesspresentation" href="lesspresentation.html">LESS CSS</a>
+
 	<header class="active slide">
-	
+		
 		<h1></h1>
 	
 	</header>
@@ -266,6 +268,8 @@ function scrollToTop(){
 				<div class="half-gutter gutter_2"></div>
 			</div>
 			
+			<p class="center"><i>Resize your browser to see the fluid grid in use.</i></p>
+			
 		</header>
 		
 		<article class="slide">
@@ -278,7 +282,7 @@ function scrollToTop(){
 					<li>A grid gives a defined context onto which you can build</li>
 					<li>Makes it easier to systematically place content</li>
 					<li>Commonly based on a 960px page width</li>
-					<li><strong>The 960 Grid</strong>, a common system, uses twelve 60px columns with 20px gutters</li>
+					<li><a href="http://960.gs/"><strong>The 960 Grid</strong></a>, a common system, uses twelve 60px columns with 20px gutters</li>
 					<li>Other common grid system use 8, 12, 16, and 18 columns</li>
 					<li>Choose a grid that makes sense for your site</li>
 				</ul>
@@ -297,7 +301,7 @@ function scrollToTop(){
 		
 			<h3>Font Sizes</h3>
 			
-			<p class="column_12">Designing your site's font sizes in relative terms is the first step in creating a responsive site. The value of <strong>1 em</strong> represents 100% of the immediate parent element's <code>font-size;</code> css attribute. Be sure to set the <code>font-size;</code> on your <code>&lt;body&gt;</code> tag. This will set the base font-size of your website.</p>
+			<p class="column_12">Designing your site's font sizes in relative terms is the first step in creating a responsive site. The value of <strong>1 em</strong> represents 100% of the immediate parent element's <code>font-size;</code> css attribute. Be sure to set the <code>font-size;</code> on your <code>&lt;body&gt;</code> tag. This will set the base font-size of your website. Setting your font sizes relative to root element makes it simple to change the global font sizes with one css change.</p>
 							
 			<div class="column_12">
 				<pre><code>
@@ -357,6 +361,7 @@ body {
 					<li>Relative dimensions with respect to context, the parent element</li>
 					<li>200px / 960px = 20.83333333333%</li>
 					<li>Fonts, dimensions, padding, and margins all in percents or ems</li>
+					<li>Resize your browser window to see the grid respond</li>
 				</ul>
 			</div>
 										
@@ -519,6 +524,8 @@ img {
 					<li><a onclick="scrollToAnchor('mediaqueries')">Media Queries</a></li>
 				</ul>
 			</nav>
+			
+			<p class="center"><i>Resize your browser to see media queries in use.</i></p>
 					
 		</header>
 		
@@ -663,8 +670,8 @@ body {
 					<h3>Thoughts on Usability</h3>
 				
 					<ul>
-						<li>Use the standard set of <strong>resolution break points</strong> for devices</li>
-						<li>Animations can smooth the <strong>transition</strong> between stylesheets</li>
+						<li>Use the standard set of <strong>resolution break points</strong> for devices, (ex. 360px, 720px, 1040px)</li>
+						<li>Animations can smooth the <strong>transition</strong> between stylesheets. <a href="http://elliotjaystocks.com/blog/css-transitions-media-queries/"><i>Read More Here</i></a></li>
 						<li>Don't confuse the user by defining different layouts and themes for different media queries</li>
 						<li>There are cases when a responsive mobile site is <strong>not the best solution</strong></li>
 					</ul>
@@ -695,9 +702,9 @@ body {
 		
 	</section>
 	
-	<section id="resources" class="temp-offset" >
+	<section id="resources">
 	
-		<article class="slide">
+		<article class="slide temp-offset">
 		
 			<h2 class="column_12">
 				<span>Resources</span>
