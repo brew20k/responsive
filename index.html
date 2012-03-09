@@ -333,9 +333,11 @@ right-column {
 				
 				</div>
 				
+				<div class="clear"></div>
+				
 			</div>
 			
-			<div class="clear"></div>
+			
 		
 		</article>
 		
@@ -391,12 +393,48 @@ body {
 		<article class="slide">
 		
 			<h3>Proportional Dimensions</h3>
-										
-			<p class="column_12">In order to have your site dynamically resize as the user changes the browser width and height, you must define all your element dimensions in relative terms. Just as font sizes are determined with respect to their parent element, so are dimensions. A width of 100% represents the full width of the element's parent.</p>
 			
 			<div class="column_12">
-				<figure class="formula"><p>The context of <strong>width</strong> is the width of its <strong>parent.</strong></p></figure>
+				<figure class="formula"><p>width &divide; parent width = % width</p></figure>
 			</div>
+			
+			<div class="columns_12">
+				<ul class="column_6">
+					<li>Traditional element width written in absolute terms (ex. width: 300px)</li>
+					<li>Write CSS in percentages (ex. width: 50%)</li>
+					<li>Relative dimensions with respect to context, the parent element</li>
+					<li>200px / 960px = 20.83333333333%</li>
+					<li>Fonts, dimensions, padding, and margins all in percents or ems</li>
+				</ul>
+				
+				<div class="column_6">
+				
+<pre style="margin-top: 0;"><code>
+body {
+  width: 90%; /* somewhat arbitrary, base of 960px */
+}
+
+#page {
+  width: 100%; /* 960px / 960px */
+}
+
+left-column {
+  width: 62.5%; /* 600px / 960px */
+}
+
+right-column {
+  width: 37.5%; /* 360px / 960px */
+}
+
+</code><div class="syntax-tag">CSS</div></pre>
+				
+				</div>
+				
+				<div class="clear"></div>
+				
+			</div>
+										
+			<p class="column_12">In order to have your site dynamically resize as the user changes the browser width and height, you must define all your element dimensions in relative terms. Just as font sizes are determined with respect to their parent element, so are dimensions. A width of 100% represents the full width of the element's parent.</p>
 			
 			<div class="column_12">
 				<pre><code>
@@ -439,7 +477,7 @@ body {
 							<div class="margin-left"></div>
 							<div class="margin-right"></div>
 						</aside>
-					</div>
+						<div class="clear"></div>
 				</div>
 			</div>
 			
@@ -450,10 +488,6 @@ body {
 			<h3>Margin and Padding</h3>
 			
 			<p class="column_12">Similar to dimensions, horizontal margin and padding must also be written in percentages.</p>
-							
-			<div class="column_12">
-				<figure class="formula"><p>The context of <strong>margin</strong> and <strong>padding</strong> is the width of its <strong>parent.</strong></p></figure>
-			</div>
 			
 			<div class="column_12">
 				<pre><code>
@@ -499,6 +533,7 @@ body {
 							<div class="margin-left"></div>
 							<div class="margin-right"></div>
 						</aside>
+						<div class="clear"></div>
 					</div>
 				</div>
 			</div>
@@ -674,7 +709,7 @@ body {
 			
 		</article>
 		
-		<article class="slide">
+		<article class="slide temp-offset">
 		
 			<div class="columns_12">
 		
@@ -708,7 +743,7 @@ body {
 		
 		</article>
 		
-		<article class="slide">
+		<article class="slide temp-offset">
 		
 			<h3>Browser Support</h3>
 		
@@ -727,7 +762,7 @@ body {
 		
 	</section>
 	
-	<section id="resources">
+	<section id="resources" class="temp-offset" >
 	
 		<article class="slide">
 		
