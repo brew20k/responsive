@@ -7,6 +7,27 @@
 	<script src="js/jquery.cycle.all.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
 	<script type="text/javascript">
+	
+	/**
+	Clear LESS cache so that color randomization works 
+	**/
+	function clearLessCache()
+	{
+		if (!window.localStorage || !less || less.env !== 'development') 
+		{
+		}
+		var host = window.location.host;
+		var protocol = window.location.protocol;
+		var keyPrefix = protocol + '//' + host + "/responsive/css/";
+
+		for (var key in window.localStorage) {
+		  if (key.indexOf(keyPrefix) === 0) {
+			delete window.localStorage[key];
+		  }
+		}
+				
+	}
+	
 	/**
 	 * HSV to RGB color conversion
 	 *
@@ -16,6 +37,7 @@
 	 * Ported from the excellent java algorithm by Eugene Vishnevsky at:
 	 * http://www.cs.rit.edu/~ncs/color/t_convert.html
 	 */
+	 
 	function hsvToRgb(h, s, v) {
 		var r, g, b;
 		var i;
@@ -107,12 +129,14 @@
 	var cycle_inProgress = false;
 	//Generate key color
 	{
-	var _h = Math.floor(Math.random() * 360);
-	var _s = Math.floor(Math.random() * 100);
-	var _v = 50;
-	less_keyColor = makeHSVString(_h,_s,_v);
+		var _h = Math.floor(Math.random() * 360);
+		var _s = Math.floor(Math.random() * 100);
+		var _v = 50;
+		less_keyColor = makeHSVString(_h,_s,_v);
 	}
-	
+
+	//Clear less cache
+	clearLessCache();	
 
 	$(document).ready(function() {
 	  $('div.codebox code pre').each(function(i, e) {hljs.highlightBlock(e, '    ')});
