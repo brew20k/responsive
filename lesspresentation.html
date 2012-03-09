@@ -15,6 +15,7 @@
 	{
 		if (!window.localStorage || !less || less.env !== 'development') 
 		{
+			return;
 		}
 		var host = window.location.host;
 		var protocol = window.location.protocol;
@@ -135,10 +136,12 @@
 		less_keyColor = makeHSVString(_h,_s,_v);
 	}
 
-	//Clear less cache
-	clearLessCache();	
 
 	$(document).ready(function() {
+		
+	//Clear less cache
+	clearLessCache();	
+	
 	  $('div.codebox code pre').each(function(i, e) {hljs.highlightBlock(e, '    ')});
 	  
 	  var hashVal = document.location.hash.substr(1);
@@ -187,7 +190,6 @@
 	</script>
 	<script type="text/javascript" src="js/less-1.2.2.min.js"></script>
 
-	
 	</head>
 	<body>
 	
@@ -712,6 +714,13 @@ div.testbox {
 					<li>Not always worth using, but can save a lot of time</li>
 					<li>Offers flexibility, increased maintenance</li>
 				</ul>
+				</div>
+			</div>
+			<div class="slide" name="end">
+				<h1>The End</h1>
+				<div class="body" style="z-index:100000">
+					<a href="/responsive/">Responsive Design</a>
+					
 				</div>
 			</div>
 			
