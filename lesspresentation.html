@@ -123,6 +123,8 @@
 	  if (slideFromHash == -1) slideFromHash = 0;
 	  $(".slidecontainer").cycle(
 		{
+		'width':window.innerWidth,
+		'fit':1,
 		'fx':'scrollHorz',
 		'startingSlide':slideFromHash,
 		'before': function() { cycle_inProgress = true; },
@@ -159,7 +161,7 @@
 	
 	
 	</script>
-	<script type="text/javascript" src="js/less-1.2.1.min.js"></script>
+	<script type="text/javascript" src="js/less-1.2.2.min.js"></script>
 
 	
 	</head>
@@ -170,7 +172,7 @@
 		<h1>What is LESS?</h1>
 			<div class="body">	
 				<div class="slide-image">
-					<a href="http://lesscss.org/" title="LESS"><img src="http://lesscss.org/images/logo.png"/></a>
+					<a href="http://lesscss.org/" title="LESS"><img border='0' src="http://lesscss.org/images/logo.png"/></a>
 				</div>		
 				<ul>
 					<li><h2>"Dynamic Stylesheet Language"</h2></li>
