@@ -59,6 +59,9 @@ $(document).ready(function() {
 	}, function() {
 		$('#page').removeClass('presentation');
 		$('body').removeClass('presentation');
+		$('footer').css('position', 'relative');
+		$('footer').css('height', '200px');
+		$('footer').css('top', 'auto');
 	});
 	
 	$('#prev-slide').click(function() {
@@ -233,7 +236,7 @@ function scrollToTop(){
 			
 			<p class="column_12">A fluid grid divides the canvas into equal sized <strong>columns</strong> separated by <strong>gutters</strong>.</p>
 			
-			<h3 class="column_12">12 Column Grid System</h3>
+			<h3 class="column_12">12 Column Grid System, 960px wide</h3>
 										
 			<div class="grid-system">
 				<div class="half-gutter gutter_1"></div>
@@ -272,10 +275,12 @@ function scrollToTop(){
 			<div class="columns_12">
 			
 				<ul class="column_6">
+					<li>A grid gives a defined context onto which you can build</li>
+					<li>Makes it easier to systematically place content</li>
 					<li>Commonly based on a 960px page width</li>
 					<li><strong>The 960 Grid</strong>, a common system, uses twelve 60px columns with 20px gutters</li>
 					<li>Other common grid system use 8, 12, 16, and 18 columns</li>
-					<li>Helps to define a standard frame on which to build a site</li>
+					<li>Choose a grid that makes sense for your site</li>
 				</ul>
 				
 				<div class="column_6">
@@ -298,14 +303,41 @@ function scrollToTop(){
 			
 			<div class="columns_12">
 				<ul class="column_6">
-					<li>Write CSS in percentages, not pixels</li>
-					<li>Fonts, dimensions, padding, and margins all in percents or ems</li>
-					<li>Divide our absolute pixel values by their context to determine the percentage</li>
+					<li>Traditional element width written in absolute terms (ex. width: 300px)</li>
+					<li>Write CSS in percentages (ex. width: 50%)</li>
+					<li>Relative dimensions with respect to context, the parent element</li>
 					<li>200px / 960px = 20.83333333333%</li>
+					<li>Fonts, dimensions, padding, and margins all in percents or ems</li>
 				</ul>
+				
+				<div class="column_6">
+				
+<pre style="margin-top: 0;"><code>
+body {
+  width: 90%; /* somewhat arbitrary, base of 960px */
+}
+
+#page {
+  width: 100%; /* 960px / 960px */
+}
+
+left-column {
+  width: 62.5%; /* 600px / 960px */
+}
+
+right-column {
+  width: 37.5%; /* 360px / 960px */
+}
+
+</code><div class="syntax-tag">CSS</div></pre>
+				
+				</div>
+				
+				<div class="clear"></div>
+				
 			</div>
 			
-			<div class="clear"></div>
+			
 		
 		</article>
 		
@@ -313,42 +345,40 @@ function scrollToTop(){
 		
 			<h3>Font Sizes</h3>
 			
-			<p class="column_12">Designing your site's font sizes in relative terms is the first step in creating a responsive site. The value of <strong>1 em</strong> represents 100% of the parent element's <code>font-size;</code> css attribute. Be sure to set the <code>font-size;</code> on your <code>&gt;body&lt;</code> tag. This will set the base font-size of your website.</p>
+			<p class="column_12">Designing your site's font sizes in relative terms is the first step in creating a responsive site. The value of <strong>1 em</strong> represents 100% of the immediate parent element's <code>font-size;</code> css attribute. Be sure to set the <code>font-size;</code> on your <code>&lt;body&gt;</code> tag. This will set the base font-size of your website.</p>
 							
 			<div class="column_12">
-				<pre>
-<code>
-.text-one {
+				<pre><code>
+body {
   font: normal 100% Helvetica, sans-serif; /* base font size 16px */
 }
 
-.text-two {
+.text-one {
   font-size: 1em; /* 16px / 16px */
 }
 
-.text-three {
+.text-two {
   font-size: 1.5em; /* 24px / 16px */
 }
 
-.text-four {
+.text-three {
   font-size: 1.5em; /* 36px / 24px */
 }</code>
-<div class="syntax-tag">CSS</div>
-				</pre>
+<div class="syntax-tag">CSS</div></pre>
 			</div>
 			
 			<div class="column_12">
 				<div class="font-example box text-one">
 					<div class="filler">
-						<span>Text One 1em = 16px</span>
+						<span>Body 16px</span>
 						<div class="box text-two">
 							<div class="filler">
-								<span>Text Two 1em = 16px</span>
+								<span>Text One 1em = 16px</span>
 								<div class="box text-three">
 									<div class="filler">
-										<span>Text Three 1.5em = 24px</span>
+										<span>Text Two 1.5em = 24px</span>
 										<div class="box text-four">
-											<div class="filler"><span>Text Four 1.5em = 36px</span></div>
+											<div class="filler"><span>Text Three 1.5em = 36px</span></div>
 										</div>
 									</div>
 								</div>
@@ -363,16 +393,51 @@ function scrollToTop(){
 		<article class="slide">
 		
 			<h3>Proportional Dimensions</h3>
+			
+			<div class="column_12">
+				<figure class="formula"><p>width &divide; parent width = % width</p></figure>
+			</div>
+			
+			<div class="columns_12">
+				<ul class="column_6">
+					<li>Traditional element width written in absolute terms (ex. width: 300px)</li>
+					<li>Write CSS in percentages (ex. width: 50%)</li>
+					<li>Relative dimensions with respect to context, the parent element</li>
+					<li>200px / 960px = 20.83333333333%</li>
+					<li>Fonts, dimensions, padding, and margins all in percents or ems</li>
+				</ul>
+				
+				<div class="column_6">
+				
+<pre style="margin-top: 0;"><code>
+body {
+  width: 90%; /* somewhat arbitrary, base of 960px */
+}
+
+#page {
+  width: 100%; /* 960px / 960px */
+}
+
+left-column {
+  width: 62.5%; /* 600px / 960px */
+}
+
+right-column {
+  width: 37.5%; /* 360px / 960px */
+}
+
+</code><div class="syntax-tag">CSS</div></pre>
+				
+				</div>
+				
+				<div class="clear"></div>
+				
+			</div>
 										
 			<p class="column_12">In order to have your site dynamically resize as the user changes the browser width and height, you must define all your element dimensions in relative terms. Just as font sizes are determined with respect to their parent element, so are dimensions. A width of 100% represents the full width of the element's parent.</p>
 			
 			<div class="column_12">
-				<figure class="formula"><p>The context of <strong>width</strong> is the width of its <strong>parent.</strong></p></figure>
-			</div>
-			
-			<div class="column_12">
-				<pre>
-<code>
+				<pre><code>
 .#my_page {
   width: 90%; /* somewhat arbitrary */
 }
@@ -391,8 +456,7 @@ function scrollToTop(){
   margin: 0 1.04166666%; /* 10px / 960px */
   width: 31.25%; /* 300px / 960px */
 }</code>
-<div class="syntax-tag">CSS</div>
-				</pre>
+<div class="syntax-tag">CSS</div></pre>
 			</div>
 			
 			<div class="columns_12">
@@ -413,7 +477,7 @@ function scrollToTop(){
 							<div class="margin-left"></div>
 							<div class="margin-right"></div>
 						</aside>
-					</div>
+						<div class="clear"></div>
 				</div>
 			</div>
 			
@@ -424,14 +488,9 @@ function scrollToTop(){
 			<h3>Margin and Padding</h3>
 			
 			<p class="column_12">Similar to dimensions, horizontal margin and padding must also be written in percentages.</p>
-							
-			<div class="column_12">
-				<figure class="formula"><p>The context of <strong>margin</strong> and <strong>padding</strong> is the width of its <strong>parent.</strong></p></figure>
-			</div>
 			
 			<div class="column_12">
-				<pre>
-<code>
+				<pre><code>
 .#my_page {
   width: 90%; /* somewhat arbitrary */
 }
@@ -453,8 +512,7 @@ function scrollToTop(){
   padding: 0 3.33333333%; /* 10px / 300px */
   width: 31.25%; /* 300px / 960px */
 }</code>
-<div class="syntax-tag">CSS</div>
-				</pre>
+<div class="syntax-tag">CSS</div></pre>
 			</div>
 			
 			<div class="columns_12">
@@ -475,6 +533,7 @@ function scrollToTop(){
 							<div class="margin-left"></div>
 							<div class="margin-right"></div>
 						</aside>
+						<div class="clear"></div>
 					</div>
 				</div>
 			</div>
@@ -511,8 +570,7 @@ function scrollToTop(){
 img {
   max-width: 100%;
 }
-</code>
-<div class="syntax-tag">CSS</div></pre>
+</code><div class="syntax-tag">CSS</div></pre>
 			</div>
 		
 			<p class="column_12">Applying <code>max-width: 100%</code> to an image forces it to constrain to the width of its parent container. If the image is not as large as its container, it simply is set to its native width.</p>
@@ -550,7 +608,7 @@ img {
 		
 			<h3>Using Media Queries</h3>
 			
-			<p class="column_12">Flexible images can be accomplished fairly easily. For more advanced cases, images at a variety of resolutions can be swapped in and out depending on the screen size, thus only loading the appropriate sized image for the situation.</p>
+			<p class="column_12">Media queries can be added for a variety of browser attributes, including <strong>min and max width</strong>, <strong>orientation</strong>, or <strong>pixel density</strong>.</p>
 			
 			<div class="column_12">
 				<figure class="formula"><p>Media queries can be used <strong>inline</strong>, on <strong>&lt;link&gt;</strong>, and on <strong>&lt;style&gt;</strong> blocks</p></figure>
@@ -561,7 +619,7 @@ img {
 @media screen and (max-width: 500px) {
 
   code {
-    background-color: #F00;
+    background-color: #1b2c86;
     -moz-transition: all 300ms ease-in-out;
     -webkit-transition: all 300ms ease-in-out;
   }
@@ -571,7 +629,7 @@ img {
 </code><div class="syntax-tag">CSS</div></pre>
 			</div>
 			
-			<p class="column_12">This sets the <code>background-color</code> to red when the screen is <strong>less than 460px wide.</strong></p>
+			<p class="column_12">This sets the <code>background-color</code> to blue when the screen is <strong>less than 500px wide.</strong></p>
 			
 			<div class="column_12">
 				<pre><code>
@@ -583,6 +641,7 @@ img {
 			<div class="column_12">
 				<pre id="link-demo"><code>
 code {
+  background-color: #1b2c86;
   box-shadow: 0 0 6px #4ad21e;
   -moz-box-shadow: 0 0 6px #4ad21e;
   -webkit-box-shadow: 0 0 6px #4ad21e;
@@ -593,10 +652,11 @@ code {
 </code><div class="syntax-tag">CSS</div></pre>
 			</div>
 							
-			<p class="column_12">This uses an <strong>imported stylesheet</strong> when the screen is less than 460px wide.</p>
+			<p class="column_12">This uses an <strong>imported stylesheet</strong> when the screen is less than 500px wide.</p>
 							
 			<div class="column_12">
-<pre><code>&lt;style type="text/css" media="screen"&gt
+<pre><code>
+&lt;style type="text/css" media="screen"&gt
 
 nav ul li {
   float: left;
@@ -645,9 +705,11 @@ body {
 			
 			<p class="column_12">You can also <strong>chain</strong> a series of media query criteria for more specific styles, targeting an iPad sized screen for example.</p>
 		
+			<div class="clear"></div>
+			
 		</article>
 		
-		<article class="slide">
+		<article class="slide temp-offset">
 		
 			<div class="columns_12">
 		
@@ -681,7 +743,7 @@ body {
 		
 		</article>
 		
-		<article class="slide">
+		<article class="slide temp-offset">
 		
 			<h3>Browser Support</h3>
 		
@@ -700,7 +762,7 @@ body {
 		
 	</section>
 	
-	<section id="resources">
+	<section id="resources" class="temp-offset" >
 	
 		<article class="slide">
 		

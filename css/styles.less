@@ -147,12 +147,12 @@ table {
 --------------------------------------------- */	
 
 html {
-	font: normal 100% Calibri, "Helvetica Neue", Arial, sans-serif;
 	height: 100%;
 }
 
 body {
 	background: url(../img/background.png) center top repeat-x;
+	font: normal 100% Calibri, "Helvetica Neue", Arial, sans-serif;
 	height: 100%;
 }
 
@@ -173,7 +173,7 @@ h3 {
 
 p {
 	color: #333;
-	font-family: Calibri, "vollkorn", "Georgia", sans-serif;
+	font-family: Calibri, "Helvetica Neue", Arial, sans-serif;
 	font-weight: 300;
 	line-height: 150%;
 }
@@ -182,7 +182,7 @@ q {
 	color: #666;
 	font-family: "fanwood";
 	font-style: italic;
-	font-size: 16px;
+	font-size: 1em;
 	display: inline-block;
 	line-height: 120%;
 	margin: 1.5em 0 .5em 0; /* 24px / 16px */
@@ -201,7 +201,7 @@ a:hover {
 }
 
 aside {
-	background-color: #F8F8F8;
+	background-color: #F4F4F4;
 	padding: 1px 20px 20px 20px;
 	margin: 0 0 2em 0;
 	-webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, .3);
@@ -330,7 +330,7 @@ img.flexible {
 }
 
 #page article ul, #page header ul {
-	font-family: "vollkorn", Calibri, "Georgia", sans-serif;
+	font-family: Calibri, "Helvetica Neue", Arial, sans-serif;
 	list-style: disc;
 	list-style-position: inside;
 }
@@ -347,7 +347,7 @@ img.flexible {
 }
 
 #page .formula {
-	background-color: #F8F8F8;
+	background-color: #F4F4F4;
 	font-size: 1.25em;
 	font-weight: 300;
 	padding: 20px;
@@ -472,7 +472,7 @@ footer > p {
 }
 
 #fluid-grid .grid-system {
-	height:  200px;
+	height:  250px;
 	margin: 2em auto;
 	overflow: hidden;
 	position: relative;
@@ -621,6 +621,7 @@ footer > p {
 
 #fluid-grid .dimension-example {
 
+	font-size: 16px;
 	font-weight: 300;
 	overflow: hidden;
 	width: 100%;
@@ -718,6 +719,7 @@ footer > p {
 
 #fluid-grid .margin-padding-example {
 
+	font-size: 16px;
 	font-weight: 300;
 	overflow: hidden;
 	width: 100%;
@@ -945,6 +947,18 @@ body.presentation #controls #next-slide {
 	display: block;
 }
 
+body.presentation {
+	font: 20px Calibri, "Helvetica Neue", Arial, sans-serif;
+}
+
+body.presentation .temp-offset {
+	margin-top: 5em !important;
+}
+
+body.presentation q {
+	font-size: 0.75em;
+}
+
 
 /* responsiveness
 --------------------------------------------- */	
@@ -955,12 +969,16 @@ body.presentation #controls #next-slide {
 	
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 780px) {
 
 	#page h1 {
 		.background-size(240px 43.333333px);
 		margin: 4.5em auto 3.5em auto;
 		width: 280px; /* fixed */
+	}
+	
+	#page article ul, #page header ul {
+		margin-bottom: 2em;
 	}
 	
 	nav {
@@ -1119,6 +1137,10 @@ body.presentation #controls #next-slide {
 	-webkit-transition: all 200ms ease-in-out;
 }
 
+code {
+	background: none !important;
+}
+
 @media screen and (max-width: 500px) {
 	
 	#inline-demo {
@@ -1132,11 +1154,15 @@ body.presentation #controls #next-slide {
 	}
 	
 	#link-demo {
+		background-color: #1b2c86;
 		box-shadow: 0 0 6px #4ad21e;
 		-moz-box-shadow: 0 0 6px #4ad21e;
 		-webkit-box-shadow: 0 0 6px #4ad21e;
 		-moz-transition: all 200ms ease-in-out;
 		-webkit-transition: all 200ms ease-in-out;
+		
+
+		
 	}
   
 
