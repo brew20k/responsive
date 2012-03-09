@@ -13,7 +13,7 @@
 	**/
 	function clearLessCache()
 	{
-		if (!window.localStorage || !less || less.env !== 'development') 
+		if (!window.localStorage || !less) 
 		{
 			return;
 		}
@@ -139,8 +139,7 @@
 
 	$(document).ready(function() {
 		
-	//Clear less cache
-	clearLessCache();	
+	
 	
 	  $('div.codebox code pre').each(function(i, e) {hljs.highlightBlock(e, '    ')});
 	  
@@ -189,7 +188,10 @@
 	
 	</script>
 	<script type="text/javascript" src="js/less-1.2.2.min.js"></script>
-
+	<script type="text/javascript">
+	//Clear less cache
+	clearLessCache();	
+	</script>
 	</head>
 	<body>
 	
